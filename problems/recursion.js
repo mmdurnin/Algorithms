@@ -10,6 +10,9 @@ function factorial(n) {
 
 //Complexity: O(n) --> A recursive call is made n times
 
+
+
+
 // Write a method fib(n) that takes in a number and returns the nth number of
 // the fibonacci sequence.
 //
@@ -35,3 +38,32 @@ function fib(n) {
 // console.log(fib(5)) --> 5
 // Complexity: O(2^n) --> More than one recursive call on each stack (2 recursive calls per stackframe)
 // Think of it as a tree. The tree is length n, but at each node, you see that it divides into 2 more nodes
+
+
+
+
+
+
+
+// Write a function, sumArray(array), that takes in an array of numbers.
+// The function should return the total sum of the elements.
+// 
+// Solve this recursively!
+//
+// Examples:
+//
+// sumArray([])             // => 0
+// sumArray([5])            // => 5
+// sumArray([5, 2])         // => 7
+// sumArray([4, 10, -1, 2]) // => 15
+function sumArray(array) {
+    console.log(array)
+    if (array.length === 0) return 0;
+    if (array.length === 1) return array[0];
+
+    let key = array.shift();
+
+    return key + sumArray(array);
+}
+
+// console.log(sumArray([5, 2]));
