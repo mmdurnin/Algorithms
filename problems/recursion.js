@@ -14,3 +14,20 @@ function factorial(n) {
 // In the fibonacci sequence, the 1st number is 1 and the 2nd number is 1. To generate the
 // next number in the sequence, we take the sum of the previous two fibonacci numbers.
 // For example the first 5 numbers of the fibonacci sequence are `1, 1, 2, 3, 5`
+
+function fib(n) {
+    //fib(1) = 1 --> [1]
+    //fib(2) = 1 --> [1, 1]
+    //fib(3) = 2 --> [1, 1, 2]
+    //fib(4) = 3 --> [1, 1, 2, 3]
+
+    if (n === 1) return 1;
+    if (n === 2) return 1;
+
+    const f1 = fib(n - 1)
+    const f2 = fib(n - 2)
+
+    return f1 + f2
+};
+
+// console.log(fib(5)) --> 5
