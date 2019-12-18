@@ -8,6 +8,8 @@ function factorial(n) {
     return n * factorial(n - 1)
 }
 
+//Complexity: O(n) --> A recursive call is made n times
+
 // Write a method fib(n) that takes in a number and returns the nth number of
 // the fibonacci sequence.
 //
@@ -31,3 +33,5 @@ function fib(n) {
 };
 
 // console.log(fib(5)) --> 5
+// Complexity: O(2^n) --> More than one recursive call on each stack (2 recursive calls per stackframe)
+// Think of it as a tree. The tree is length n, but at each node, you see that it divides into 2 more nodes
