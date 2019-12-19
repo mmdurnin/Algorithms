@@ -58,9 +58,17 @@ function sumArray(array) {
 // reverseString("c")           // => "c"
 // reverseString("internet")    // => "tenretni"
 // reverseString("friends")     // => "sdneirf"
-function reverseString(str) {
+
+function reverseString(str) { //"maureen"
     if (str.length <= 1) return str
+
+    let lastIdx = str.length - 1
     let result = ""
+
+    result += str.slice(lastIdx) // result = "n"
+    let sliced = str.slice(0, lastIdx) // sliced = "maureen"
+
+    return result.concat(reverseString(sliced))
 }
 
 
@@ -81,7 +89,13 @@ function reverseString(str) {
 // pow(3, 4)    // => 81
 // pow(2, -5)   // => 0.03125
 function pow(base, exponent) {
-
+    if (exponent === 0) return 1
+    if (exponent < 0) {
+        let exp = exponent * -1
+        return 1 / (base * pow(base, (exp - 1)))
+    } else {
+        return base * pow(base, (exponent-1))
+    }
 }
 
 
@@ -114,7 +128,13 @@ function pow(base, exponent) {
 //     2-dimensional array: [['some data']]
 //     3-dimensional array: [[['some data']]]
 function flatten(data) {
+    if (!Array.isArray(data)) return data
 
+    let arr = [];
+    for (let i = 0; i < data.length; i++) {
+        arr = arr.concat(flatten(data[i]))
+    }
+    return arr;
 }
 
 // Write a function, fileFinder(directories, targetFile), that accepts an object representing directories and a string respresenting a filename.
@@ -157,7 +177,19 @@ function flatten(data) {
 // fileFinder(desktop, 'everlong.flac');            // => true
 // fileFinder(desktop, 'sequoia.jpeg');             // => false
 function fileFinder(directories, targetFile) {
+    let keys = Object.keys(directories)
 
+
+    if (keys.includes(targetFile)) return true;
+
+    for (let i = 0; i < keys.length; i++) {
+        key = keys[i]
+        if (key[0] === "/") {
+            if (fileFinder(directories[key], targetFile) === true) return true
+        }
+    }
+
+    return false
 }
 
 
