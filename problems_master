@@ -11,7 +11,19 @@ Bubble sort
 Selection sort
 Insertion sort
 
+Concepts
+Recursion
+Memoization
+Callbacks & closures
+Sorts
+Data structures
+
+Technologies
+SQL
+
+Problems
 Find the biggest "island" in a 2-d array made of 1s and 0s
 Find the biggest contiguous sum of numbers in an array
 Asteroids
 MyBind
+myCurry
