@@ -203,7 +203,19 @@ function fileFinder(directories, targetFile) {
 // pathFinder(desktop, 'everlong.flac'));       // => '/music/genres/rock/everlong.flac'
 // pathFinder(desktop, 'honeybadger.png'));     // => null
 function pathFinder(directories, targetFile) {
+  let keys = Object.keys(directories);
 
+  if (keys.includes(targetFile)) return `/${targetFile}`;
+
+  for (let i = 0; i < keys.length; i++) {
+    let key = keys[i];
+    if (key[0] === "/") {
+      let next = pathFinder(directories[key], targetFile);
+      console.log(next);
+      if (!!next && next.includes(targetFile)) return key.concat(next);
+    }
+  }
+  return null;
 }
 
 

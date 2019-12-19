@@ -122,6 +122,27 @@ function fileFinder(directories, targetFile) {
   return false;
 }
 
-console.log(fileFinder(desktop, "app_academy_logo.svg"));
-console.log(fileFinder(desktop, 'everlong.flac'));            // => true
-console.log(fileFinder(desktop, 'sequoia.jpeg'));             // => false
+// console.log(fileFinder(desktop, "app_academy_logo.svg"));
+// console.log(fileFinder(desktop, 'everlong.flac'));            // => true
+// console.log(fileFinder(desktop, 'sequoia.jpeg'));             // => false
+
+
+function pathFinder(directories, targetFile) {
+  let keys = Object.keys(directories);
+
+  if (keys.includes(targetFile)) return `/${targetFile}`;
+
+  for (let i = 0; i < keys.length; i++) {
+    let key = keys[i];
+    if (key[0] === "/") {
+      let next = pathFinder(directories[key], targetFile);
+      console.log(next)
+      if (!!next && next.includes(targetFile)) return key.concat(next)
+    }
+  }
+  return null;
+}
+
+console.log(pathFinder(desktop, "app_academy_logo.svg"));
+console.log(pathFinder(desktop, 'everlong.flac'));           
+console.log(pathFinder(desktop, 'sequoia.jpeg'));             
