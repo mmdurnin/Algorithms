@@ -2,17 +2,120 @@
 Big O notation is used to describe the complexity of an algorithm, and how expensive it will be for the machine to run the algorithm in the worst case scenario.
 
 • What is the DOM?
+Document Object Model
+Programming interface to web pages
+**Represents the page as objects and nodes
+Programs can connect to the DOM to read, write and manipulate content
+Opening devtools gives you a visual representation/ map of the DOM
+Gets created from HTML document
+
 • What is the event loop?
+While javascript in single threaded, it operates asynchronously with its use of the event loop.
+Javascript uses a callstack to keep track of order in which to execute functions. 
+In this way, it does not necessarily read top to bottom. 
+Some functions will be added to the stack with event listeners, some as callbacks, there are also functions that will trigger a web api request (i.e., setTimeOut). This predicts the order in which things are added to the stack.
+When setTimeOut is executed, the function is taken out of the stack and is handled by a web API which in this case will track the amount of time.
+When the specified amount of time has been reached, the setTimeOut callback will be sent to another component of the operation called the callback queue.
+My understanding is that the actual event loop is a very small part of this: it will look at the stack and look at the queue. If there isn't anything in the stack, it will pull the first thing out of the queue and add it to the stack to be executed.
+But I think we generally think of the whole process as the event loop.
+
+
 • What is a closure?
+A closure is a function that can be stored as a variable that has the special ability of being able to access the scope of another function.
+Specifically, it has access to the scope in which it was defined. 
+Its called a closure because 
+
 • How does prototypal inheritance work, and how is it different from classical inheritance? 
 (this is not a useful question IMO, but a lot of people like to ask it)
+
 • How does prototypal inheritance work?
+
 • What is event bubbling and how does it work? 
 (this is also a bad question IMO, but a lot of people like to ask it too)
+
 • Describe a few ways to communicate between a server and a client. 
 Describe how a few network protocols work at a high level (IP, TCP, HTTP/S/2, UDP, RTC, DNS, etc.)
+
 • What is REST, and why do people use it?
+
 • My website is slow. Walk me through diagnosing and fixing it. 
 What are some performance optimizations people use, and when should they be used?
+
 • What frameworks have you used? What are the pros and cons of each? 
+
 • Why do people use frameworks? What kinds of problems do frameworks solve?
+
+• Explain What Is The Lazy Loading?
+
+• What is the difference between null and undefined?
+
+• What Is Variable Scope?
+
+• Explain What Is An IIFE?
+
+• What Is A Callback Function?
+
+• Tell Me Why Do We Recommend External Css Or Javascript Versus Inline?
+
+• Explain What "this" Is In Javascript?
+
+• Do You Know What Is Cors? How Does It Work?
+
+• Tell Me How Do You Clear A Floated Element?
+
+• Explain Why Table-less Layout Is Very Important?
+
+• Explain What Is An Anonymous Function?
+
+• Explain What Is Ajax? Write An Ajax Call?
+
+• Explain What Event Bubbling Is?
+
+• What Is Stringify?
+
+• What Are This And That Keywords?
+
+• What Is Event Delegation?
+
+• Why Do We Need To Use W3c Standard Code?
+
+• What Is A Float?
+
+• How To Optimize The Page Using Front End Code Or Technology?
+(How To Increase Page Performance?)
+
+• Have You Ever Used A Css Preprocessor/precompiler? What Are The Benefits?
+
+• Do You Know What Is The Importance Of The Html Doctype?
+
+• What Is The Difference Between Responsive And Adaptive Development?
+
+• Tell Me Where Do You Place Your Javascript On The Page?
+
+• Explain The Difference Between Inline, Block, Inline-block And Box-sizing?
+
+• Explain What Is Web A Application?
+
+• Explain What Is The Difference Between A Prototype And A Class?
+
+• What Is The Difference Between Call And Apply?
+
+• Explain The Difference Between Visibility:hidden; And Display:none?
+
+• Do You Know What Is A Sprite? How Is It Applied Using Css? What Is The Benefit?
+
+• Explain The Difference Between Static, Fixed, Absolute And Relative Positioning?
+
+• What Is The Difference Between Html And Xhtml?
+
+• What Is A Javascript Object?
+
+• What Is The Difference Between Form Get And Form Post?
+
+• Explain The Difference Between == And === ?
+
+• Tell Me Are You Familiar With Jasmine Or Qunit?
+
+• What Is The Difference Between A Host Object And A Native Object?
+
+• What is an API?

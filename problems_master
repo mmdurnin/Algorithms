@@ -12,6 +12,7 @@ Selection sort
 Insertion sort
 
 Concepts
+**Big O 
 Recursion
 Memoization
 Callbacks & closures
