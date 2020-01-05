@@ -119,3 +119,52 @@ What are some performance optimizations people use, and when should they be used
 • What Is The Difference Between A Host Object And A Native Object?
 
 • What is an API?
+
+• What is callback hell?
+
+• React lifecycle methods: what are they? How purpose to they serve? List and talk about.
+
+• What are promises, what are their 3 states? 
+
+• CSS - nth element / first child
+
+• What is shadow DOM?
+
+• What are psuedo elements? What are psuedoclasses?
+
+• What is "this"?
+
+• What is prototypal inheritance?
+
+• DIY prototypal inheritance
+
+• Function declaration vs function expression
+
+• What is hoisting?
+
+• What is functional programming? 
+
+• What are pure functions?
+
+• What is type coercion?
+
+• What is the difference between 2-way data bindinng and 1-way data flow?
+
+• React - why can't you use "state="? (Have to you "this.setState")
+
+• What are fragments?
+
+• How to do code splitting in React? 
+-What is code splitting?
+-What is lazy loading?
+
+• What is redux?
+-What are some alternatives to redux?
+
+• What is middleware?
+
+• Redux saga vs redux thunk
+
+• What is a framework?
+
+• What is "use strict"?
