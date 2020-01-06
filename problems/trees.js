@@ -1,5 +1,7 @@
 /* 
+
 GRAPH: A graph is a collection of nodes and edges between those nodes
+
 TREE: 
 A tree is a type of graph that does not contain any cycles (nodes to children go in one direction)
 Mathematicians allow tree to be defined by this alone ("root node" rule does not apply)
@@ -7,6 +9,14 @@ Computer scientists reserve the word "tree" exclusively for "rooted" tree, meani
 Regardless, a tree is a tree even if it is composed of 0 nodes and 0 edges
 
 BINARY TREE: A binary tree is one in which there is at MOST 2 branches off of any given node
+
+BINARY SEARCH TREE:
+Binary tree with additional criteria:
+- left subtree contains values LESS than the root
+- right subtree contains values GREATER / EQUAL to the root
+- the left and right subtrees are binary search trees
+(basically, it's sorted in the above way)
+- an empty tree with 0 nodes is still a binary search tree
 
 OTHER TERMS:
 Root: The ultimate parent node, can access every other node
@@ -164,5 +174,48 @@ function breadthFirst(root) {
         console.log(node.val)
         if (node.left) queue.push(node.left);
         if (node.right) queue.push(node.right);
+    }
+}
+
+
+
+
+
+// BINARY SEARCH TREE
+
+// Implement Tree Node class
+class TreeNode {
+    constructor(val) {
+        this.val = val;
+        this.left = null;
+        this.right = null;
+    }
+}
+
+// Implement BST class
+class BST {
+    constructor() {
+        this.root = null;
+    }
+
+    insert(val, root=this.root) {
+        if (!this.root) {
+            this.root = new TreeNode(val);
+            return;
+        }
+
+        if (val < root.val) {
+            if (!root.left) {
+                root.left = new TreeNode(val);
+            } else {
+                this.insert(val, root.left) // this makes a recursive search to find out where to insert it
+            }
+        } else {
+            if (!root.right) {
+                root.right = new TreeNode(val);
+            } else {
+                this.insert(val, root.right)
+            }
+        }
     }
 }
