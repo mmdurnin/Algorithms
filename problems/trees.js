@@ -17,7 +17,6 @@ Path: A series of nodes that can be traveled through edges
 
 
 
-
 // BINARY TREE
 // • Terms:
 // - "Left" & "Right": The children of a node on either left or right, respectively
@@ -46,4 +45,62 @@ a.right = c;
 b.left = d;
 b.right = e;
 c.left = f;
-c.right = k;
+c.right = g;
+
+/*
+            a
+      b          c
+  d      e    f      g
+
+*/
+
+
+/* 
+TREE TRAVERSALS
+I. INORDER, PREORDER, POSTORDER 
+- recursive
+
+INORDER (e.g., inOrderPrint function)
+* base case = "if there is no root, return"
+- print all nodes on the left subtree
+- print root
+- print all nodes in the right subtree
+
+PREORDER (e.g., preOrderPrint function)
+- print root
+- print all nodes in left subtree
+- print all nodes in right subtree
+
+POSTORDER (e.g., postOrderPrint function)
+- print all nodes on left
+- print all nodes on right
+- print root
+
+*/
+
+// INORDER
+function inOrderPrint(root) {
+    if (!root) return;
+
+    inOrderPrint(root.left);
+    console.log(root.val);
+    inOrderPrint(root.right);
+}
+
+// PREORDER
+function preOrderPrint(root) {
+    if (!root) return;
+
+    console.log(root.val);
+    preOrderPrint(root.left);
+    preOrderPrint(root.right);
+}
+
+// POSTORDER
+function postOrderPrint(root) {
+    if (!root) return;
+
+    postOrderPrint(root.left);
+    postOrderPrint(root.right);
+    console.log(root.val);
+}
