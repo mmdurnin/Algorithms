@@ -55,8 +55,14 @@ c.right = g;
 */
 
 
+
+
+
+
+
+// TREE TRAVERSALS
+
 /* 
-TREE TRAVERSALS
 I. INORDER, PREORDER, POSTORDER 
 - recursive
 
@@ -67,6 +73,7 @@ INORDER (e.g., inOrderPrint function)
 - print all nodes in the right subtree
 
 PREORDER (e.g., preOrderPrint function)
+(this is DFS)
 - print root
 - print all nodes in left subtree
 - print all nodes in right subtree
@@ -87,7 +94,7 @@ function inOrderPrint(root) {
     inOrderPrint(root.right);
 }
 
-// PREORDER
+// PREORDER (DFS)
 function preOrderPrint(root) {
     if (!root) return;
 
@@ -103,4 +110,59 @@ function postOrderPrint(root) {
     postOrderPrint(root.left);
     postOrderPrint(root.right);
     console.log(root.val);
+}
+
+/*
+II. Breadth First Search (BFS) & Depth First Search (DFS)
+
+More Vocab:
+- b & c are SIBLINGS
+- d & e are DESCENDANTS of b
+- b, c, d, e, f, & g are DESCENDANTS of a
+
+DFS
+* Utilizes a stack ("LIFO" = Last In First Out)
+* Recursive
+
+BFS
+* Utilizes a queue ("FIFO" = First In First Out)
+* Not recursive
+* Think of the tree as levels (level 0 = a, level 1 = b, c, etc); address in order of level
+* (will return a, b, c, d, e, f, g)
+
+*/
+
+// DFS - ITERATIVE:
+function depthFirst(root) {
+    let stack  = [ root ];
+
+    while (stack.length) { //while stack.length > 0
+        let node = stack.pop();
+        console.log(node.val);
+
+        if (node.right) stack.push(node.right);
+        if (node.left) stack.push(node.left);
+    }
+}
+
+// DFS - RECURSIVE:
+function depthFirstRecursive(root) {
+    if (!root) return;
+
+    console.log(root.val);
+    depthFirstRecursive(root.left);
+    depthFirstRecursive(root.right);
+} //(note that this is the same as preorder search)
+
+
+// BFS
+function breadthFirst(root) {
+    let queue = [ root ];
+
+    while (queue.length) {
+        let node = queue.shift();
+        console.log(node.val)
+        if (node.left) queue.push(node.left);
+        if (node.right) queue.push(node.right);
+    }
 }
