@@ -141,6 +141,13 @@ ABSOLUTE: without setting left /right whatever, it will be positioned where it w
 - offset coordinates are positiond relative to nearest ancestor that is not position static
 - margins do not collapse
 - left/ right/ top/ bottom properties will stretch it
+- the box of the element will take up minimal space unless overwritten by width/ height
+FIXED: offset coordinates are relative to the window, *not the document* - since not all windows are the same size, this could result in the element being positioned weird
+- stays in place relative to the window, even on scroll
+- like absolute: allows z-index, the box takes minimal size unless specified by height and width, margins can be set but do not collapse, left/ right etc can stretch element
+- does not take space on page, lifted up
+- also creates coordinate system for absolute children
+
 
 
 
