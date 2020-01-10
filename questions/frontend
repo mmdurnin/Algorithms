@@ -23,10 +23,13 @@ But I think we generally think of the whole process as the event loop.
 • What is a closure?
 A closure is a function that can be stored as a variable that has the special ability of being able to access the scope of another function.
 Specifically, it has access to the scope (the "lexical environment") in which it was defined. 
+Another definition that I like: A closure is a function plus a connection to the variables that exist at its “birth place”
 Its called a closure because it is an operation where one function closes over the other.
+* A nested function's scope includes variables declared within the function where it was defined
 When the function has finished executing, that scope is usually destroyed/ irrelevant (unaccessable)but when you create an inner function, 
 the variables from the outer function are not destroyed after execution because the inner function still has access to it
-Uses: 1. Data privacy - in ruby you can write functions under a private property but you cannot do this with JavaScript.
+Uses: 
+1. Data privacy - in ruby you can write functions under a private property but you cannot do this with JavaScript.
 In JavaScript, we can emulate the private keyword by using closures.
 Variables defined inside of a function can only be accessed in the scope of that function. 
 2. Readers and writers - Change the values of local variables by functions defined inside of it.
@@ -49,11 +52,32 @@ function accessLocal() {
 maintainLocal = accessLocal()
 maintainLocal.seeLocal() --> 10
 maintainLocal.changeLocal(10) --> 20
+** 3. They can also be used by functions to store state that persists across function calls. 
 
-• How does prototypal inheritance work, and how is it different from classical inheritance? 
+Think of it like this: when a function is invoked with an argument, the function will run, return a value, and the state will not change
+A closure will hold onto the state of the outer function at the time in which it was invoked
+
+? • How does prototypal inheritance work, and how is it different from classical inheritance? 
 (this is not a useful question IMO, but a lot of people like to ask it)
 
-• How does prototypal inheritance work?
+? • How does prototypal inheritance work?
+
+• What is a higher order function? 
+A function that takes a function as an argument and/or returns a function.
+
+• What type of language is Javascript? (object oriented vs functional)
+JavaScript is both object oriented and functional
+
+• Functional vs OOP:
+                            FUNCTIONAL                                                  OOP
+Definition          Emphasizes on evaluation of functions                       Based on concept of objects
+Data                Uses immutable data                                         Uses mutable data
+Model               Uses declarative programming model                          Uses imperative programming model
+Support             Supports parallel programming                               Does not support parallel programming
+Execution           Statements can be executed in any order                     Statements should be executed in particular order
+Iteration           Recursion used for iterative data                           Loops used for iterative data
+Element             Basic elements are variables and functions                  Basic elements are objects and methods
+Use                 Few things with more operations                             More things with fewer operations
 
 • What is event bubbling and how does it work? 
 (this is also a bad question IMO, but a lot of people like to ask it too)
@@ -73,6 +97,12 @@ What are some performance optimizations people use, and when should they be used
 • Explain What Is The Lazy Loading?
 
 • What is the difference between null and undefined?
+
+• What is scope?
+The scope of a method is the set of variables available inside of the method, including:
+- variables defined inside of the method
+- variables declared before function was defined
+- arguments
 
 • What Is Variable Scope?
 
@@ -131,6 +161,7 @@ What are some performance optimizations people use, and when should they be used
 
 • Explain The Difference Between Static, Fixed, Absolute And Relative Positioning?
 STATIC: default, *no z-index*, no nudging, takes up normal space, informally considered "not positioned"
+- overflow: hidden only works on other static elements, so if its not working, change it to positin relative
 RELATIVE: initially displayed in same space as it would static but it can be nudged "relative" to its original (static) position
 - creates a coordinate system for its absolute children
 - allows z-index
@@ -175,7 +206,19 @@ FIXED: offset coordinates are relative to the window, *not the document* - since
 
 • What is shadow DOM?
 
-• What are psuedo elements? What are psuedoclasses?
+• What are psuedo elements? What are psuedoclasses? Psuedo content?
+PSUEDO CONTENT: Used to inject content INSIDE of an element either at the beginning or the end
+- default styling inline
+- ex: 
+h1:before {
+    content: ___
+}
+(so you need to specify "content:" to inject content into it)
+- you can inject string content or attribute content
+- adding attribute content ex: 
+a:after {
+  content: " (" attr(href) ")";
+}
 
 • What is "this"?
 
