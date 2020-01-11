@@ -117,10 +117,6 @@ def generate_spiral(n)
         end
         rounds -= 1 if rounds > 1
         steps -= 1 if steps > 1
-        p "rounds"
-        p rounds
-        p "steps"
-        p steps
     end
     return matrix
 end
@@ -140,4 +136,23 @@ def advanceCoords(direction, coords)
 end
 
 puts "generating spiral"
-puts generate_spiral(3)
+# puts generate_spiral(3)
+
+
+# Given a non-empty array of digits representing a non-negative integer, plus one to the integer.
+
+# The digits are stored such that the most significant digit is at the head of the list, and each element in the array contain a single digit.
+
+# You may assume the integer does not contain any leading zero, except the number 0 itself.
+
+def plus_one(digits)
+    digits = digits.join.to_i + 1
+    digits = digits.to_s
+    digits.chars.map {|ch| ch.to_i}
+end
+
+p plus_one([1, 2, 3])
+
+# Given a sorted linked list, delete all duplicates such that each element appear only once.
+# Input: 1->1->2
+# Output: 1->2
