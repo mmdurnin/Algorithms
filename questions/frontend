@@ -29,7 +29,7 @@ Its called a closure because it is an operation where one function closes over t
 When the function has finished executing, that scope is usually destroyed/ irrelevant (unaccessable)but when you create an inner function, 
 the variables from the outer function are not destroyed after execution because the inner function still has access to it
 Uses: 
-1. Data privacy - in ruby you can write functions under a private property but you cannot do this with JavaScript.
+1. Private state - in ruby you can write functions under a private property but you cannot do this with JavaScript.
 In JavaScript, we can emulate the private keyword by using closures.
 Variables defined inside of a function can only be accessed in the scope of that function. 
 2. Readers and writers - Change the values of local variables by functions defined inside of it.
@@ -57,7 +57,7 @@ maintainLocal.changeLocal(10) --> 20
 Think of it like this: when a function is invoked with an argument, the function will run, return a value, and the state will not change
 A closure will hold onto the state of the outer function at the time in which it was invoked
 
-? • How does prototypal inheritance work, and how is it different from classical inheritance? 
+• How does prototypal inheritance work, and how is it different from classical inheritance? 
 (this is not a useful question IMO, but a lot of people like to ask it)
 
 ? • How does prototypal inheritance work?
@@ -256,6 +256,10 @@ a:after {
 • What is a framework?
 
 • What is "use strict"?
+Adding "use strict" do the document creates a mode that watches for/prohibits variable declaration without const, var etc. 
+Without "use strict", you could say x = "elephant" without erroring out. This could create a problem if you assign a variable 
+inside of a function that is meant to only be scoped to that function (without declaring, it will be globally scoped). 
+"Use strict" mode will return an error when assigning a variable without declaring it with const/ var/ etc.
 
 • What is webpack?
 
