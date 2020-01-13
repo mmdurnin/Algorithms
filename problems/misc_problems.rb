@@ -85,6 +85,20 @@ end
 # 15  26  25  24  9
 # 14  13  12  11  10
 
+# [[1, 2],
+#   3, 4]]
+
+# [[ 1, 2, 3, 4,5],
+#  [16,17,18,19,6],
+#  [15,24,25,20,7],
+#  [14,23,22,21,8],
+#  [13,12,11,10,9]]
+
+#  [[ 1, 2, 3, 4,5],
+#   [16,17,18,19,6],
+#   [15,0,23,44,7],
+#   [14,0,22,46,8],
+#   [13,12,11,10,9]]
 
 # 1   2   3   4   
 # 12  13  14  5
@@ -95,28 +109,51 @@ end
 # 8   9   4
 # 7   6   5
 
+# def generate_spiral(n)
+#     matrix = Array.new(n){Array.new(n, 0)}
+
+#     rounds = 3
+#     steps = n - 1
+
+#     coords = [0, 0]
+#     direction = ["right", "down", "left", "up"]
+#     count = 1
+
+#     until count > n ** 2
+#         rounds.times do
+#             steps.times do
+#                 matrix[coords[0]][coords[1]] += count
+#                 coords = advanceCoords(direction[0], coords)
+#                 count += 1
+                
+#             end
+#             direction.push(direction.shift)
+#         end
+#         rounds -= 1 if rounds > 1
+#         steps -= 1 if steps > 1
+#     end
+#     return matrix
+# end
+
 def generate_spiral(n)
     matrix = Array.new(n){Array.new(n, 0)}
-
-    rounds = 3
-    steps = n - 1
 
     coords = [0, 0]
     direction = ["right", "down", "left", "up"]
     count = 1
 
     until count > n ** 2
-        rounds.times do
-            steps.times do
-                matrix[coords[0]][coords[1]] += count
-                coords = advanceCoords(direction[0], coords)
-                count += 1
-                
-            end
+        matrix[coords[0]][coords[1]] += count
+        temp = advanceCoords(direction[0], coords)
+
+        if temp[0] < matrix.length && temp[1] < matrix.length && (matrix[temp[0]][temp[1]] == 0)
+            coords = temp
+        else
             direction.push(direction.shift)
+            coords = advanceCoords(direction[0], coords)
         end
-        rounds -= 1 if rounds > 1
-        steps -= 1 if steps > 1
+
+        count += 1
     end
     return matrix
 end
@@ -136,7 +173,7 @@ def advanceCoords(direction, coords)
 end
 
 puts "generating spiral"
-# puts generate_spiral(3)
+print generate_spiral(1)
 
 
 # Given a non-empty array of digits representing a non-negative integer, plus one to the integer.
@@ -151,8 +188,16 @@ def plus_one(digits)
     digits.chars.map {|ch| ch.to_i}
 end
 
-p plus_one([1, 2, 3])
+# p plus_one([1, 2, 3])
 
 # Given a sorted linked list, delete all duplicates such that each element appear only once.
 # Input: 1->1->2
 # Output: 1->2
+
+# class ListNode
+#     attr_accessor :val, :next
+#     def initialize(val)
+#         @val = val
+#         @next = nil
+#     end
+# end  
