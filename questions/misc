@@ -2,10 +2,33 @@
     - Recursion is used to solve problems that can be decomposed into smaller versions of the same problem.
 
 • Tell Us The Purpose Of Each Of The Http Request Types When Used With A Restful Web Service?
+GET: Client tells server to provide some type of specified content
+PATCH: Client tells server to make a change
+PUT: Also saying make a change but less used because I think it replaces all of the info rather than changing the existing info
+POST: Client tells server to accept/ create new content (like creating a new user account)
+DELETE: Client tells server to destroy specified content
 
 • What happens when you type in www.google.com?
+- Every DNS (Domain Name Server) corresponds to and IP address
+1. Browser will check its own DNS cache, then the operating system's cache, then the router's cache, then the internet service provider (ISP)'s
+   DNS cache in search of the the corresponding IP address
+2. The browser builds the the HTTP request (in this example, a GET request)
+3. The browser sends the request over the network
+  (*border gateway protocol*)
+4. (Possible interaction with proxy server / load balancer / CDN / etc.)
+  - CDN: Content Delivery Network, a network of servers in place to deliver content over the shortest distance so that it 
+    can be more quickly delivered anywhere on the globe
+5. Server parses request string and routes it using Regex on the request path
+6. The application layer assembles its response. There could be a possible connection to the database server
+7. The response is sent back over the network with a status code 
+8. The client parses the response
+  - checks the headers (in particular the status code which will indicate the status of the response)
+9. Browser goes through the HTML and paints the DOM
+10. The browser might build a new GET request for each of the CSS / JS tags (objects embeded in the HTML), go through the same steps & run code before proceeding
 
 • What is a CORS request? (what does CORS stand for?)
+Cross-Origin Resource Sharing (CORS) is a mechanism that uses additional HTTP headers to tell browsers to give a web application running at one origin, 
+access to selected resources from a different origin.
 
 • What are the HTTP status codes?
 1xx - informational
@@ -13,3 +36,25 @@
 3xx - redirection
 4xx - client error
 5xx - server error
+
+• What do you like about Ruby?
+- readable & verbose
+  -- really easy to learn
+  -- really easy to understand other people's code when you're working on a collaboration
+- object oriented
+- basically it's an easy language
+
+• What do you like about Rails?
+- "convention over configuration"
+
+• Pros and cons of rails:
+PROS:
+- it's relatively easy to learn and based on its popularity there is a lot of information out there for debugging
+- Because it's so widely used, it's also very reliable
+- it accepts a lot of useful libraries (or "gems")
+- it requires a strong adherence to convention
+  -- easier to understand other people's code, more readable, easier to collaborate
+  -- minimizes the amount of code you need to write in the future
+CONS:
+- strong coding standards / strictness is a tradeoff for flexibility
+- its a heavy framework

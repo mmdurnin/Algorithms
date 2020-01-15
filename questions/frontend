@@ -1,5 +1,17 @@
 • What is Big O notation, and why is it useful?
 Big O notation is used to describe the complexity of an algorithm, and how expensive it will be for the machine to run the algorithm in the worst case scenario.
+O(1) - Constant: independent of input size
+O(log(n)) - Logarithmic: running time grows in proportion to the logarithm of the input size (at first relatively expensive and goes down)
+O(n) - Linear: directly proportional to input size 
+O(n * log(n)) - Quasilinear / Loglinear: Executes n number of operations, each of which runs in logarithmic time
+O(n^2) - Quadratic: Executes n number of operations, each of which requires n number of operations
+O(n^c) - Polynomial: C = fixed constant, executes n number of operations, each of which requires n number of operations a constant number of times
+O(c^n) - Exponential: Algorithms growth multiplies by the constant with each additional unit of input size 
+       (e.g., O(2^n) doubles with each addition to the input data set)
+       ex: generate all subsets/ combinations in an array
+O(n!) - Factorial: Think: a recursive call that has n # of recursive calls in each stack
+       n! = (n) * (n - 1) * (n - 2) * ....
+       ex: Permutations (all possible combinations AND orders)
 
 • What is the DOM?
 Document Object Model
@@ -10,7 +22,7 @@ Opening devtools gives you a visual representation/ map of the DOM
 Gets created from HTML document
 
 • What is the event loop?
-While javascript in single threaded, it operates asynchronously with its use of the event loop.
+While javascript in single threaded, it operates asynchronously with its use of asynchronous functionsthe event loop.
 Javascript uses a callstack to keep track of order in which to execute functions. 
 In this way, it does not necessarily read top to bottom. 
 Some functions will be added to the stack with event listeners, some as callbacks, there are also functions that will trigger a web api request (i.e., setTimeOut). This predicts the order in which things are added to the stack.
@@ -57,7 +69,10 @@ maintainLocal.changeLocal(10) --> 20
 Think of it like this: when a function is invoked with an argument, the function will run, return a value, and the state will not change
 A closure will hold onto the state of the outer function at the time in which it was invoked
 
-• How does prototypal inheritance work, and how is it different from classical inheritance? 
+
+
+
+? • How does prototypal inheritance work, and how is it different from classical inheritance? 
 (this is not a useful question IMO, but a lot of people like to ask it)
 
 ? • How does prototypal inheritance work?
@@ -81,6 +96,7 @@ Use                 Few things with more operations                             
 
 • What is event bubbling and how does it work? 
 (this is also a bad question IMO, but a lot of people like to ask it too)
+An event will bubble up an element's ancestors. If there is an event listener on an ancestor, an action will fire.
 
 • Describe a few ways to communicate between a server and a client. 
 Describe how a few network protocols work at a high level (IP, TCP, HTTP/S/2, UDP, RTC, DNS, etc.)
@@ -105,8 +121,10 @@ The scope of a method is the set of variables available inside of the method, in
 - arguments
 
 • What Is Variable Scope?
+- JavaScript variables are functionally scoped.
 
 • Explain What Is An IIFE?
+- Immediately Invoked Function Expression (invoked by adding "()")
 
 • What Is A Callback Function?
 
