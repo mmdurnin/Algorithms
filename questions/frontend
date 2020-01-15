@@ -113,6 +113,7 @@ The scope of a method is the set of variables available inside of the method, in
 • Tell Me Why Do We Recommend External Css Or Javascript Versus Inline?
 
 • Explain What "this" Is In Javascript?
+"This" refers to the object that is being referenced by the current piece of code which has its own context and scope
 
 • Do You Know What Is Cors? How Does It Work?
 
@@ -158,6 +159,8 @@ The scope of a method is the set of variables available inside of the method, in
 • Explain The Difference Between Visibility:hidden; And Display:none?
 
 • Do You Know What Is A Sprite? How Is It Applied Using Css? What Is The Benefit?
+It's like a collage of images merged togetther on a single master file that can be compressed and opened on the front end 
+to speed up content delivery
 
 • Explain The Difference Between Static, Fixed, Absolute And Relative Positioning?
 STATIC: default, *no z-index*, no nudging, takes up normal space, informally considered "not positioned"
@@ -198,9 +201,28 @@ FIXED: offset coordinates are relative to the window, *not the document* - since
 
 • What is callback hell?
 
+• What is react?
+React is a JavaScript User Interface library 
+Used for simplifying by building User Interface components
+Uses a virtual DOM which increases efficiency to state changes by only rerendering effected elements on the page
+--> it does this by using a diffing algorithm between the virtual dom and the real dom
+    Whenever anything may have changed, the entire UI will be re-rendered in a Virtual DOM representation.
+    The difference between the previous Virtual DOM representation and the new one will be calculated.
+    The real DOM will be updated with what has actually changed. This is very much like applying a patch.
+
+• Pros of react
+    - creates a virtual DOM which speeds up rerendering by only updating the real dom with needed changes
+    - Uses one way data binding: ReactJS allows for direct work with components and uses downward data binding to ensure that changes 
+      of child structures don’t affect their parents. That makes code stable.
+
 • React lifecycle methods: what are they? How purpose to they serve? List and talk about.
 
 • What are promises, what are their 3 states? 
+- A promise is an object that represents completion or failure of an asynchronous operation
+- A promise can be:
+  * fulfilled: action related to promise succeeded
+  * rejected: action related to promise failed
+  * pending: hasn't fulfilled or rejected yet
 
 • CSS - nth element / first child
 
@@ -245,11 +267,19 @@ a:after {
 • How to do code splitting in React? 
 -What is code splitting?
 -What is lazy loading?
+Lazy loading is an optimization technique where only the required sections of the page are loaded
 
 • What is redux?
+Redux is a library that is used for managing the state of the DOM
 -What are some alternatives to redux?
+Angular
+View.js
+Backbone
+
 
 • What is middleware?
+A set of methods that are triggered when a dispatch gets sent to the store
+Acts as a middleman to interact with state pre and post changes
 
 • Redux saga vs redux thunk
 

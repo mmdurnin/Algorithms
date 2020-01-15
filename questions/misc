@@ -6,3 +6,10 @@
 • What happens when you type in www.google.com?
 
 • What is a CORS request? (what does CORS stand for?)
+
+• What are the HTTP status codes?
+1xx - informational
+2xx - success
+3xx - redirection
+4xx - client error
+5xx - server error
