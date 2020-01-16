@@ -122,10 +122,11 @@ Use                 Few things with more operations                             
 (this is also a bad question IMO, but a lot of people like to ask it too)
 An event will bubble up an element's ancestors. If there is an event listener on an ancestor, an action will fire.
 
-• Describe a few ways to communicate between a server and a client. 
-Describe how a few network protocols work at a high level (IP, TCP, HTTP/S/2, UDP, RTC, DNS, etc.)
-
 • What is REST, and why do people use it?
+REST stands for representational state transfer
+It is a set of principals related to client/server HTTP requests
+APIs that adhere to RESTful architecture are making use of specific verbs, resources and format that can be easily understood by the server
+The client can say get me information, change this information, delete this information 
 
 • My website is slow. Walk me through diagnosing and fixing it. 
 What are some performance optimizations people use, and when should they be used?
@@ -174,6 +175,9 @@ The scope of a method is the set of variables available inside of the method, in
 • What Are This And That Keywords?
 
 • What Is Event Delegation?
+You can put an even listener on a parent element to avoid sticking separate event listeners on all of its child
+ elements, which should speed up your load time. The child elements will register events and the events will 
+ bubble up to the parent element. 
 
 • Why Do We Need To Use W3c Standard Code?
 
@@ -352,3 +356,7 @@ There are 5-7 primitives, depending on who you're asking. Here are the 7:
 - boolean
 - symbol
 Besides null and undefined, all values have object equivalents that wrap around the primitive values.
+
+
+• Describe a few ways to communicate between a server and a client. 
+Describe how a few network protocols work at a high level (IP, TCP, HTTP/S/2, UDP, RTC, DNS, etc.)
