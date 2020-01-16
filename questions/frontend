@@ -72,10 +72,34 @@ A closure will hold onto the state of the outer function at the time in which it
 
 
 
-? • How does prototypal inheritance work, and how is it different from classical inheritance? 
-(this is not a useful question IMO, but a lot of people like to ask it)
+• How is prototypal inheritance different from classical inheritance? 
+- classical inheritance describes a system that is more taxonomy-based: a more specific class will inherit from a more general class
+  with prototypal inheritance, the inheriting object is more like an example of the ancestor object
+- classical inheritance is like passing on a blue print: descriptions of format and instantiation get passed down
+  prototypal inheritance is like delegation and it involves a prototype chain (explained below), but in brief:
+        each ancestor in the chain will check if they have the method or attribute being searched for and then they'll ask their ancestors
+- classical inheritance separates classes with instances and happens through instantiation (you have the class that describes and the instances)
+  prototypal inheritance is more like linking on object to the other (one object points to another)
 
-? • How does prototypal inheritance work?
+
+• How does prototypal inheritance work?
+First, some vocab:
+PROTOTYPE: the object that holds methods for the inheritors, held by the ancestor
+(ex: Array.prototype.reverse --> The Array prototype holds a function called reverse that all instances of the Array can have access to)
+__PROTO__: internal object that holds info about the instance and pointers to its ancestors prototype (points to prototype it was created from)
+prototype = property of class constructor (this is what my children will inherit) and proto = property of instance (this is what I have inherited)
+1. When a method gets called on an object, the search starts with direct methods on the object 
+2. It then looks on the __proto__ of the object, which points to the prototype of the object it inherited from
+3. Prototypes also have a proto which points to greater ancestor's prototype
+So if I said "sparky.__proto__.__proto__" that would point to he prototype of animal
+DIY inheritance function:
+Function.prototype.inherits = function(Parent) {
+  function Surrogate() {}
+  Surrogate.prototype = Parent.prototype;
+  this.prototype = new Surrogate();
+  this.prototype.constructor = this;
+};
+
 
 • What is a higher order function? 
 A function that takes a function as an argument and/or returns a function.
