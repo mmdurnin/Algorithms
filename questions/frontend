@@ -130,6 +130,14 @@ The client can say get me information, change this information, delete this info
 
 • My website is slow. Walk me through diagnosing and fixing it. 
 What are some performance optimizations people use, and when should they be used?
+- Event delegation can be used when you have the same action that needs to be registered to a bunch of child elements
+  (reduce load time by sticking the event listener on the parent element - the events bubble)
+- Minimizing calls to the backend 
+  - Use a sprite (= make a collage of images rather than separate requests and zip them up for their delivery, unzip them on the front end)
+  - set up browser caching (= set e-tags on the request headers for the cached info, the server will compare the date last sent to the date last updated)
+- Lazy loading
+- Be strategic on where you're loading your javascript files (or launch them only after an event listener is triggered saynig that the page is fully loaded)
+- Use a CDN
 
 • What frameworks have you used? What are the pros and cons of each? 
 
