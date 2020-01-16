@@ -140,6 +140,28 @@ What are some performance optimizations people use, and when should they be used
 - Use a CDN
 
 • What frameworks have you used? What are the pros and cons of each? 
+RAILS:
+PROS:
+- it's relatively easy to learn and based on its popularity there is a lot of information out there for debugging
+- Because it's so widely used, it's also very reliable
+- it accepts a lot of useful libraries (or "gems")
+- it requires a strong adherence to convention
+  -- easier to understand other people's code, more readable, easier to collaborate
+  -- minimizes the amount of code you need to write in the future
+CONS:
+- strong coding standards / strictness is a tradeoff for flexibility
+- its a heavy framework
+REACT
+Technically react is only a library because it only gives you means to build components and render them in the DOM 
+But I've talked to a lot of people who casually refer to it as a framework because its a much larger ecosystem with its own specialized language, tools etc
+So I wanted to bring up that I have used it 
+PROS:
+- It's so organized!
+- React creates a virtual DOM which speeds up rerendering time 
+CONS:
+- Not extremely necessary for smaller projects
+  - requires a lot of set up
+  - theres a lot of extra code involved in formatting components which minimizes for bigger projects but could be wasteful for smaller
 
 • Why do people use frameworks? What kinds of problems do frameworks solve?
 
