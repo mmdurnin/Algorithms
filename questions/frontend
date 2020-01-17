@@ -206,6 +206,14 @@ The scope of a method is the set of variables available inside of the method, in
 "This" refers to the object that is being referenced by the current piece of code which has its own context and scope
 
 • Do You Know What Is Cors? How Does It Work?
+- cross-origin resource sharing
+- allows for HTTP requests between sites so that one origin site can potentially grab resources from another domain 
+- CORS adds new HTTP headers that provide access to permitted origin domains
+  If you're on a website and the code of that website is trying to send a request to an external site,
+  the browser is going to pick it up and say "hey this requires us to follow the CORS protocol, I'll whip up a request"
+  It sends an OPTIONS request (its an HTTP verb) to the server asking what its allowed to do
+  The server will respond with a list of available / supported methods
+  If what the client was trying to do is listed in that response, the browser will send that request in
 
 • Tell Me How Do You Clear A Floated Element?
 
