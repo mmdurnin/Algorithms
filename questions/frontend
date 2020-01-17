@@ -164,10 +164,20 @@ CONS:
   - theres a lot of extra code involved in formatting components which minimizes for bigger projects but could be wasteful for smaller
 
 • Why do people use frameworks? What kinds of problems do frameworks solve?
+- Frameworks make learning easier. Learning is much more achievable within some type of structure where you can make connections and operate by rules and frameworks make this possible.
+- Frameworks make collaboration easier because its easier to understand another person's code when they're writing within a framework
+- Easier to debug 
+  -they have more rules, meaning that the behavior of your code is going to be more predictable
+  -more public info, resources, documentation for debugging
+- Usually also a lot of libraries that will help you reach your objective
 
 • Explain What Is The Lazy Loading?
+Lazy loading is an optimization technique where on page load, you only load the required resources and elements on to the page
+and then others are loaded as needed
 
 • What is the difference between null and undefined?
+Both represent empty values but null is a type object and by convention, when you want to assign nothing, you set null
+whereas undefined is returned when nothing was assigned, however you can set undefined (in practice you set null)
 
 • What is scope?
 The scope of a method is the set of variables available inside of the method, including:
