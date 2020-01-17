@@ -266,25 +266,69 @@ These standards ensure cross-platform compatability
 - External stylesheets
 - Minimizing server requests
 - Lazy loading
+- Use responsive design instead of using device-based redirects
 
 • Have You Ever Used A Css Preprocessor/precompiler? What Are The Benefits?
 - keeps code DRY with nesting and variable naming
 
 • Do You Know What Is The Importance Of The Html Doctype?
+An instruction to the web browser about what version of the markup language the page is written in
+It's written before the HTML tag
 
 • What Is The Difference Between Responsive And Adaptive Development?
+Responsive is fluid and flexible
+Adaptive adapts to the detected device/screen size.
 
 • Tell Me Where Do You Place Your Javascript On The Page?
+It depends, there isn't one set place where you need to place it but without given instructions (e.g., wait for the page to load),
+it's in good practice to place it at the bottom so that the DOM is painted before loading the Javascript
+Of course it depends, if you need immediate functionality from your script, putting it at the bottom would require a wait for all resources to load first. 
 
 • Explain The Difference Between Inline, Block, Inline-block And Box-sizing?
+Inline - you cannot set height or width. The height and the width will expand or shrink to fit exactly the size of the content
+       - you CAN still set padding and border
+       - you can set width-wise margin but cannot set top and bottom margin
+Block  - in term so sizing, you can do anything
+       - neighboring elements will fall down to the next line (it reserves the whole page, width-wise)
+Inline-Block - the perfect combination of the two
+             - it takes up just as much room as it needs and doesn't effect neighboring elements more than it has to
+Box-sizing - irrelevant to this question. It's not in comparision of the others. 
+Box-sizing is a property that comes with border-box and content-box.
+    border-box will set the element so that that height and the width account for the whole element, not just the content inside
+    content-box means that just the content will account for size. Any additional padding, etc will be extra
 
-• Explain What Is Web A Application?
+• Explain What Is a web Application?
+A web application is a computer program that utilizes web browsers and web technology to perform tasks over the Internet.
+Here is the typical web app flow:
+User triggers a request to the web server over the Internet, either through a web browser or the application’s user interface
+Web server forwards this request to the appropriate web application server
+Web application server performs the requested task – such as querying the database or processing the data – then generates the results of the requested data
+Web application server sends results to the web server with the requested information or processed data
+Web server responds back to the client with the requested information that then appears on the user’s display
 
 • Explain What Is The Difference Between A Prototype And A Class?
+A PROTOTYPE is just an object. 
+Every function created has a prototype 
+Prototypes are responsible for defining the behavior of instances but they behave like any other object, hold any type of info, and be used by anything
+A CLASS is a special type of object with special properties and methods
+It is responsible for creating instances 
+Instance behavior in a classist language is defined with special syntax and/or special methods invoked on the class
 
 • What Is The Difference Between Call And Apply?
+Call: comma
+Apply: array
+owner.method.apply(myThis, [other, args])
+owner.method.call(myThis, other, args)
+ex:
+var person1 = {name: 'Marvin', age: 42, size: '2xM'};
+function sayHello(greeting) {
+    console.log(greeting + this.name + "!")
+}
+sayHello.call(person1, "Hi there")
 
 • Explain The Difference Between Visibility:hidden; And Display:none?
+Visibility hidden is pretty much just transparent. It's still there you just can't see it.
+Display non takes the element out of the DOM
 
 • Do You Know What Is A Sprite? How Is It Applied Using Css? What Is The Benefit?
 It's like a collage of images merged togetther on a single master file that can be compressed and opened on the front end 
@@ -309,8 +353,6 @@ FIXED: offset coordinates are relative to the window, *not the document* - since
 - like absolute: allows z-index, the box takes minimal size unless specified by height and width, margins can be set but do not collapse, left/ right etc can stretch element
 - does not take space on page, lifted up
 - also creates coordinate system for absolute children
-
-
 
 
 • What Is The Difference Between Html And Xhtml?
