@@ -37,29 +37,6 @@ access to selected resources from a different origin.
 4xx - client error
 5xx - server error
 
-• What do you like about Ruby?
-- readable & verbose
-  -- really easy to learn
-  -- really easy to understand other people's code when you're working on a collaboration
-- object oriented
-- basically it's an easy language
-
-• What do you like about Rails?
-- "convention over configuration"
-
-• Pros and cons of rails:
-PROS:
-- it's relatively easy to learn and based on its popularity there is a lot of information out there for debugging
-- Because it's so widely used, it's also very reliable
-- it accepts a lot of useful libraries (or "gems")
-- it requires a strong adherence to convention
-  -- easier to understand other people's code, more readable, easier to collaborate
-  -- minimizes the amount of code you need to write in the future
-CONS:
-- strong coding standards / strictness is a tradeoff for flexibility
-- its a heavy framework
-
-
 • My website is slow. Walk me through diagnosing and fixing it. 
 - Minimize database queries by grabbing all the required info at once and parsing it
 - Event delegation can be used when you have the same action that needs to be registered to a bunch of child elements
@@ -70,3 +47,98 @@ CONS:
 - Lazy loading
 - Be strategic on where you're loading your javascript files (or launch them only after an event listener is triggered saynig that the page is fully loaded)
 - Use a CDN
+
+
+PROS AND CONS
+
+• RUBY:
+PROS:
+- readable & verbose
+  -- really easy to learn
+  -- really easy to understand other people's code when you're working on a collaboration
+- object oriented
+- basically it's an easy language
+CONS:
+- nobody is that into Ruby anymore; it's like they've all moved onto the next cool thing
+- as is the case with all scripting languages, it's generally slower at runtime
+
+
+
+
+• RAILS:
+PROS:
+- it's relatively easy to learn and based on its popularity there is a lot of information out there for debugging
+- Because it has a large community, it's also very reliable
+- it accepts a lot of useful libraries (or "gems")
+- it requires a strong adherence to convention
+  -- easier to understand other people's code, more readable, easier to collaborate
+  -- minimizes the amount of code you need to write in the future
+CONS:
+- strong coding standards / strictness is a tradeoff for flexibility
+- its a heavy framework
+• What do you like about Rails?
+- "convention over configuration"
+
+
+
+• NODE:
+PROS:
+- all the benefits you would get with javascript
+- known for offering high performance
+- it also has a large community
+- uses javascript which makes it really easy to pick up if you already know javascript
+- asynchronous event-driven IO (input/output)
+  good for building I/O network-intensive applications
+- huge number of free tools
+CONS:
+- not as good for building CPU intensive applications
+  like if you sent a request to the backend that required computational work, it would be blocked because its single threaded
+
+REACT
+PROS:
+- It's so organized! Convention of dividing into components -> smaller components
+- React creates a virtual DOM which speeds up rerendering time 
+CONS:
+- Not extremely necessary for smaller projects
+  - requires a lot of set up
+  - theres a lot of extra code involved in formatting components which minimizes for bigger projects but could be wasteful for smaller
+
+
+CSS:
+PROS:
+- It's fun and with CSS knowledge comes a lot of cool functionality and effects
+CONS:
+- CSS bugs can be so darn puzzling (footer example)
+
+
+
+• MONGODB:
+PROS:
+- scalable and fast 
+- supports a big amount of data 
+CONS:
+- doesn't support foreign keys or joins
+- less intuitive but maybe that's because I learned postgreSQL first
+
+• POSTGRESQL:
+PROS:
+- intuitive, easy to use
+- relational database meaning support for joins and foreign keys
+CONS:
+- becuase it is relational and supports joins and transactions, it can't handle as high of a load compared to a document-oriented database
+
+• JAVASCRIPT:
+PROS:
+- popular, large community, wealth of info and resources publically available for just about anything you want to do
+- dynamic
+  - can execute many behaviors at runtime as opposed to having to be compiled
+  - basically you can do just about anything with it: you can put an event listener on a element with a value assigned to it that changes its value (bad example i guess)
+- weakly typed: it will easily allow you to coerce one type into another
+- multiparadigm: supports functional and object-oriented programming
+- single-threaded AND concurrent 
+- never-blocking
+CONS:
+- becuase it's weakly-typed, sometimes you will encounter unexpected behaviors
+- too many curly-braces and semicolons
+GENERAL:
+- prototype-based
