@@ -216,18 +216,32 @@ The scope of a method is the set of variables available inside of the method, in
   If what the client was trying to do is listed in that response, the browser will send that request in
 
 • Tell Me How Do You Clear A Floated Element?
+clear: both;
 
-• Explain Why Table-less Layout Is Very Important?
+? • Explain Why Table-less Layout Is Very Important?
 
 • Explain What Is An Anonymous Function?
+A function without a name (a function with a name is a function declaration), often instead assigned to a variable (which is a function expression):
+var x = function(a, b) {
+    console.log(a)
+    console.log(b)
+}
 
 • Explain What Is Ajax? Write An Ajax Call?
-
-• Explain What Event Bubbling Is?
+AJAX stands for asynchronous javascript and xml
+Allows applications to send and receive information from a server asynchronously, without having to refresh the page
+$.ajax({
+    method: 'GET',
+    url: '/api/users/2'
+})
 
 • What Is Stringify?
+It's used to transform JSON into a string
 
 • What Are This And That Keywords?
+"this" refers to the object invoking the the function whose scope houses the "this" keyword
+Sometimes we can lose "this" by changing scope (like going a function deeper)
+To hold onto our "this" object, we say "let that = this", and that way we can reference the object without worrying if we've entered into a deeper scope
 
 • What Is Event Delegation?
 You can put an even listener on a parent element to avoid sticking separate event listeners on all of its child
@@ -350,8 +364,20 @@ a:after {
 • DIY prototypal inheritance
 
 • Function declaration vs function expression
+declared function: function myFunction(x) {....
+  - declared functions are hoisted
+  - cannot be self-invoked
+function expression: var x = function(x) {...
+  - function expressions are not hoisted
+  - can be self-invoked
+
 
 • What is hoisting?
+Javascript's default behavior for moving declarations to the top of the current scope
+* Hoisting applies to variable declarations and function declarations *
+ex: const x (variable declaration)
+    function maureensFunction(x) {...} (function declaration)
+A declared function / variable can be called before it was declared
 
 • What is functional programming? 
 
