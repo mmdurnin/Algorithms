@@ -249,13 +249,26 @@ You can put an even listener on a parent element to avoid sticking separate even
  bubble up to the parent element. 
 
 • Why Do We Need To Use W3c Standard Code?
+W3C stands for World Wide Web Consortium
+It is an international community of member organizations that articulate web standards
+These standards ensure cross-platform compatability 
+(Ensure that all websites look and function the same across browsers)
 
 • What Is A Float?
+- A number that has a decimal point (floating decimal point)
+- CSS: a property that forces an element to float left/ right/ none/ inherit inside of its parentt body with neighboring elements wrapping around
 
 • How To Optimize The Page Using Front End Code Or Technology?
 (How To Increase Page Performance?)
+- Event delegation
+- Sprites
+- caching
+- External stylesheets
+- Minimizing server requests
+- Lazy loading
 
 • Have You Ever Used A Css Preprocessor/precompiler? What Are The Benefits?
+- keeps code DRY with nesting and variable naming
 
 • Do You Know What Is The Importance Of The Html Doctype?
 
