@@ -192,8 +192,15 @@ The scope of a method is the set of variables available inside of the method, in
 - Immediately Invoked Function Expression (invoked by adding "()")
 
 • What Is A Callback Function?
+- A callback is a function that is launched/ executed on completion of another function
+- This is helpful because sometimes we don't want a function to be executed until another has finished
 
 • Tell Me Why Do We Recommend External Css Or Javascript Versus Inline?
+- HTML code is never cached, external dependencies like CSS and JS sheets will be cached by the browser, so it reduces the amount of http requests when the user clicks through the browser
+- The HTML code will weigh more with more inline styling, so inline styling will reduce the load speed of your HTML
+  (Using external CSS files will reduce HTML file size which helps with fast rendering if webpage)
+- It's easier to work off of a collective, organized style sheet when you need to make styling changes, rather than scanning the HTML
+- If everything were inline you would have to indivually apply the same style to elements that could potentially have a shared classname (less DRY)
 
 • Explain What "this" Is In Javascript?
 "This" refers to the object that is being referenced by the current piece of code which has its own context and scope
