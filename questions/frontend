@@ -356,12 +356,15 @@ FIXED: offset coordinates are relative to the window, *not the document* - since
 
 
 • What Is The Difference Between Html And Xhtml?
+xhtml stands for extensible hypertext markup language
+its stricter than Html
 
 • What Is A Javascript Object?
+A collection of data as key value pairs
 
-• What Is The Difference Between Form Get And Form Post?
 
 • Explain The Difference Between == And === ?
+== disregards type
 
 • Tell Me Are You Familiar With Jasmine Or Qunit?
 
