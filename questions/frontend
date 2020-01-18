@@ -499,3 +499,10 @@ Besides null and undefined, all values have object equivalents that wrap around 
 
 • Describe a few ways to communicate between a server and a client. 
 Describe how a few network protocols work at a high level (IP, TCP, HTTP/S/2, UDP, RTC, DNS, etc.)
+
+• What is the first argument typically passed into a node.js callback handler?
+error
+• Why do you think thats usually done that way?
+Becuase of a lot of uncaught exceptions that can happen, (in node.js it's not as easy to catch exceptions by the main process),
+    so it's just a best practice to put that out there, by putting it as the first argument in the module it warns the developer that
+    this can be an error
