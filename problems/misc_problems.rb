@@ -275,3 +275,61 @@ def search_matrix(matrix, target)
     end
     return false
 end
+
+
+# Write me a method that will check to see if a string is a palindrome
+def check_palindrome(string)
+    string.each_char.with_index do |char, idx|
+        return false if char != string[string.length - idx - 1]
+    end
+
+    return true
+end
+
+# p check_palindrome("racecar")
+# p check_palindrome("pumpkin")
+# p check_palindrome("raccar")
+
+# Write a function to check how many occurrences of a given character occur in a given string
+
+def count_chars(string, char)
+    count = 0
+    string.each_char.with_index {|ch, i| count += 1 if ch == char}
+    return count
+end
+
+# p count_chars("maureen", "e")
+
+# Given an array of numbers 1..i, one of those numbers is a duplicate. Write a method to find that duplicate
+
+def find_dup(arr)
+    final_num = arr.length - 1
+
+    no_dup = (1..final_num).to_a.sum
+    sum = arr.sum
+
+    return sum - no_dup
+end
+
+# p find_dup([1, 2, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+
+# Now correct method to return back multiple #s that are duplicates
+
+require 'set'
+
+def find_dups(arr)
+    visited = {}
+    mults = Set.new()
+
+    arr.each_with_index do |num, i|
+        if !visited[num]
+            visited[num] = i 
+        else
+            mults.add(num)
+        end
+    end
+
+    return mults.to_a
+end
+
+p find_dups([1, 2, 2, 3, 4, 5, 5, 5, 6, 7, 8, 8, 9, 10])
