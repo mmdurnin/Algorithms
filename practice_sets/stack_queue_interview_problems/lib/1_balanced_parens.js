@@ -76,7 +76,38 @@
 // Let's code!
 // -----------
 function balancedParens(str) {
+    let opening = {'(': 1, '{': 2, '[': 3};
+    let closing = {')': 1, '}': 2, ']': 3}
 
+    let open = [];
+
+    for (let i = 0; i < str.length; i++) {
+        let char = str[i];
+        // if opening hash includes character (if its an opening bracket), push it in to stack
+        if (!!opening[char]) open.push(char)
+
+        // if its a closing bracket:
+        if (!!closing[char]) {
+        // 1. IF its partner is ontop of the stack
+        // -- pop the partner off stack & continue
+            if (!open.length) return false;
+            let idx = open.length - 1;
+            let partner = open[idx];
+            if (opening[partner] === closing[char]) {
+                open.pop();
+            } else {
+                // 2. IF its partner is not ontop of stack return false
+                return false;
+            }
+
+        }
+    }
+    // if open is NOT empty, return false
+    if (!!open.length) return false;
+    // if its empty, return true
+    return true;
 }
+
+console.log(balancedParens('var z = ()(x + 5)/6) + 2*(x + 10))'))
 
 exports.balancedParens = balancedParens;
