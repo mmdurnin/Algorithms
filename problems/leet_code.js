@@ -203,4 +203,133 @@ var sort = function(left, right) {
 }
 
 
-console.log(threeSum([-1, 0, 1, 2, -1, -4], 0))
+// console.log(threeSum([-1, 0, 1, 2, -1, -4], 0))
+
+// write a function for solving a sudoku puzzle
+
+var solveSudoku = function (board) {
+    // for each box
+    // if place is empty
+    // count from 1-9 through box
+    // count from 1-9 horizontally
+    // count from 1-9 vertically
+    // if only a singly number is unaccounted for --> place = unaccounted number
+
+    let top = board.slice(0, 3);
+    let mid = board.slice(3, 6);
+    let bottom = board.slice(6);
+
+    // squares
+    let q1 = subSlice(0, 3, top);
+    let q2 = subSlice(3, 6, top);
+    let q3 = subSlice(6, 9, top);
+    let q4 = subSlice(0, 3, mid);
+    let q5 = subSlice(3, 6, mid);
+    let q6 = subSlice(6, 9, mid);
+    let q7 = subSlice(0, 3, bottom);
+    let q8 = subSlice(3, 6, bottom);
+    let q9 = subSlice(6, 9, bottom);
+
+    // horizontal = outer ([*][])
+    // vertical = inner ([][*])
+
+    // helper function goes through matrix until it gets a "hit", return new matrix with hit
+    // if not "hit", return false
+    // keep calling function until returns false
+
+    let squares = [q1, q2, q3, q4, q5, q6, q7, q8, q9];
+
+    console.log(replaceTile(board, squares))
+    
+    function replaceTile(board, squares) {
+        let h = 0;
+        let v = 0;
+        let outerCount = 0;
+
+        let innerMin = 0;
+        let innerMax = 3;
+
+        let outerMin = 0;
+        let outerMax = 3;
+
+        let altered = false;
+
+        for (let i = 0; i < squares.length; i++) {
+            let square = squares[i];
+            while (h < outerMax) {
+                v = innerMin;
+                while (v < innerMax) {
+                    if (board[h][v] === ".") {
+                        let replacement = search(h, v, square, board);
+                        if (!!replacement) board[h][v] = replacement;
+                        return board;
+                    }
+                    v++;
+                }
+                h++;
+            }
+            if (outerCount < 2) {
+                h = 0;
+                innerMin += 3;
+                innerMax += 3;
+                outerCount++;
+            } else {
+                v = 0;
+                innerMin = 0;
+                innerMax = 3;
+                outerMin += 3;
+                outerMax += 3;
+                outerCount = 0;
+                h = outerMin;
+            }
+        }
+
+        return (!!altered) ? matrix : false;
+    }
+
+    function search(h, v, square, board) {
+        let temp = []
+        let i = 0;
+        let horizontal = board[h];
+        let vertical = [];
+        for (sub = 0; sub < 9; sub++) {
+            vertical.push(sub[v])
+        }
+
+        while (i < 9) {
+            let target = i.toString();
+            if (square.includes(target) || horizontal.includes(target) || vertical.includes(target)) {
+                i++;
+            } else {
+                temp.push(target);
+                i ++;
+            }
+        }
+        if (temp.length === 1) {
+            return temp[0];
+        } else {
+            return false;
+        }
+    }
+
+    function subSlice(start, finish, matrix) {
+        let arr = [];
+        for (let i = 0; i < matrix.length; i++) {
+            for (let j = start; j < finish; j++) {
+                arr.push(matrix[i][j])
+            }
+        }
+        return arr;
+    }
+};
+
+console.log(solveSudoku(
+    [["5", "3", ".", ".", "7", ".", ".", ".", "."], 
+     ["6", ".", ".", "1", "9", "5", ".", ".", "."], 
+     [".", "9", "8", ".", ".", ".", ".", "6", "."], 
+     ["8", ".", ".", ".", "6", ".", ".", ".", "3"], 
+     ["4", ".", ".", "8", ".", "3", ".", ".", "1"], 
+     ["7", ".", ".", ".", "2", ".", ".", ".", "6"], 
+     [".", "6", ".", ".", ".", ".", "2", "8", "."], 
+     [".", ".", ".", "4", "1", "9", ".", ".", "5"], 
+     [".", ".", ".", ".", "8", ".", ".", "7", "9"]]))
