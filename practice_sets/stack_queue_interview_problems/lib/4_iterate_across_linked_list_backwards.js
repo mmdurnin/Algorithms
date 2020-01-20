@@ -25,10 +25,112 @@
 // -----------
 // Let's code!
 // -----------
+// class Node {
+//     constructor(val) {
+//         this.value = val;
+//         this.next = null;
+//         this.prev = null;
+//     }
+// }
+
+// class Queue {
+//     constructor() {
+//         this.beginning = null;
+//         this.ending = null;
+//         this.length = 0;
+//     }
+//     enqueue(val) {
+//         const newNode = new Node(val)
+//         if (!this.length) {
+//             this.beginning = newNode;
+//             this.ending = newNode;
+//         } else {
+//             const temp = this.ending;
+//             this.ending = newNode;
+//             temp.next = this.ending;
+//             this.ending.prev = temp;
+//         }
+
+//         this.length++;
+//     }
+
+//     dequeue() {
+//         if (!this.length) {
+//             return null;
+//         }
+//         const temp = this.beginning;
+//         const tempVal = temp.value;
+//         const newBeg = temp.next;
+//         this.beginning = newBeg;
+//         this.beginning.prev = null;
+
+//         length --;
+//         return tempVal;
+//     }
+// }
+
+class Node {
+    constructor(val) {
+        this.value = val;
+        this.next = null;
+    }
+}
+
+// Refactor the regular Stack below into a MinMaxStack!
+class Stack {
+    constructor() {
+        this.top = null;
+        this.bottom = null;
+        this.length = 0;
+    }
+
+    push(val) {
+        const newNode = new Node(val);
+
+        if (!this.top) {
+            this.top = newNode;
+            this.bottom = newNode;
+        } else {
+            const temp = this.top;
+            this.top = newNode;
+            this.top.next = temp;
+        }
+        return ++this.length;
+    }
+
+    pop() {
+        if (!this.top) {
+            return null;
+        }
+        const temp = this.top;
+        if (this.top === this.bottom) {
+            this.bottom = null;
+        }
+        this.top = this.top.next;
+
+        this.length--;
+        return temp.value;
+    }
+
+    size() {
+        return this.length;
+    }
+}
 
 function iterateAcrossLinkedListBackwards(linkedList) {
     // TODO: Implement the iterateAcrossLinkedListBackwards function here
+    let stack = new Stack();
 
+    let temp = linkedList
+    while (temp.value != null) {
+        stack.push(temp.value)
+        temp = temp.next;
+    }
+    let str = "";
+    while (!stack.length) {
+        str = str.concat(stack.pop)
+    }
+    return str;
 }
 
 exports.iterateAcrossLinkedListBackwards = iterateAcrossLinkedListBackwards;
