@@ -109,10 +109,18 @@ class binaryHeap {
 
 
 function heapify(array, n, i) {
+    console.log("last")
+    console.log(n)
+    console.log("root index")
+    console.log(i)
     let leftIdx = i * 2 + 1;
     let rightIdx = i * 2 + 2;
     let leftVal = array[leftIdx];
     let rightVal = array[rightIdx];
+    console.log("left idx")
+    console.log(leftIdx)
+    console.log("right idx")
+    console.log(rightIdx)
 
     // Make sure we're not targeting region outside of heap
     if (leftIdx >= n) leftVal = -Infinity;
