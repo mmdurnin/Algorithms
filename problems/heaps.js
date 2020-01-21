@@ -106,3 +106,52 @@ class binaryHeap {
         this.siftDown(swapIdx)
     }
 }
+
+
+function heapify(array, n, i) {
+    let leftIdx = i * 2 + 1;
+    let rightIdx = i * 2 + 2;
+    let leftVal = array[leftIdx];
+    let rightVal = array[rightIdx];
+
+    // Make sure we're not targeting region outside of heap
+    if (leftIdx >= n) leftVal = -Infinity;
+    if (rightIdx >= n) rightVal = -Infinity; 
+
+    // base case (if array @ parent index is greater than children, return)
+    if (array[i] > leftVal && array[i] > rightVal) return;
+
+    let swapIdx;
+    if (leftVal < rightVal) {
+        swapIdx = rightIdx;
+    } else {
+        swapIdx = leftIdx;
+    };
+
+    // swap the array element @ parent position with the array element that is bigger (@ swap index)
+    swap(array, i, swapIdx)
+    // continue swapping the targeted element until its child isn't bigger than it
+    heapify(array, n, swapIdx)
+}
+
+function swap(array, i, j) {
+    [array[i], array[j]] = [array[j], array[i]]
+}
+
+function heapSort(array) {
+    // turn array into heap
+    for (i = array.length - 1; i >= 0; i--) {
+        heapify(array, array.length, i);
+    };
+
+    // create sorted region, shifting root vals into it & heapsorting remaining
+    for (let endOfHeap = array.length - 1; endOfHeap >= 0; endOfHeap--) {
+        // since we have already turned the array into a heap, we know that the head is the max value
+        // and we want to put it into our sorted region
+        swap(array, endOfHeap, 0); // always swap the end of the heap with the first of the array
+        heapify(array, endOfHeap, 0);
+    }
+    return array;
+}
+
+console.log(heapSort([50, 20, 10, 51, 99, 12, 2], 6, 0))
