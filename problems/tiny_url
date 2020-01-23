@@ -1,0 +1,40 @@
+* main: design a service where a user will give you a long URL and you will return a short URL / 
+    user will give you short URL and you have to return its long URL partner
+* Basic questions:
+- What are our key features?
+- Scale: Is this app content-heavy? Is this app write-heavy?
+- Access: Is this a website that can be accessed globally?
+* Design breakdown: API, application layer, persistence layer 
+
+* API: how is the user going to interact with my service? (What are users asking for?)
+    -- create tinyURL
+        - method: POST, url: "/", data: {long_url} 
+    -- get longURL
+        - method: GET, url: "/{:id}"
+            controller action: db search of tiny url, redirect to return value
+    • Our endpoint should be named after the entity we're accessing (getting, creating)
+* Application layer: ("service" / "controller" layer) How will I achieve this functionality
+    -- how do I generate a short URL from a long URL? (CREATE)
+* Persistence layer: Storage (What scale of storage do I need to consider?)
+    -- how will I store references to long URLs? (GET)
+
+* Constraints
+- tiny URL must be unique
+
+* Thoughts...
+APPLICATION LAYER:
+- How tiny can we make it?
+    -- how many possible characters are we working with?
+    -- how many tiny URLs are we expecting to save?
+(a..z) == 26 chars
+(A..Z) == 26 chars
+(0..9) == 10 chars
+ total == 62 chars 
+ -> if we make a tiny URL that is *7* chars long, we have 62^7 combinations
+      == 3.5 trillion combinations
+      There are ~700 million websites in existence, so 3.5 million should be fine
+
+- Can we set tiny URLs to expire?
+
+PERSISTENCE LAYER:
+- How to scale? (consider # requests per second. Are they requests that require edits to multiple tables?)
