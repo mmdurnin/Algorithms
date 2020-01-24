@@ -48,6 +48,14 @@ access to selected resources from a different origin.
 - Be strategic on where you're loading your javascript files (or launch them only after an event listener is triggered saynig that the page is fully loaded)
 - Use a CDN
 
+• example of an interesting technical problem you solved
+• example of an interpersonal conflict you overcame
+• example of leadership or ownership
+• story about what you should have done differently in a past project
+• piece of trivia about your favorite language, and something you do and don't like about said language
+• question about the company's product/business
+• question about the company's engineering strategy (testing, Scrum, etc)
+
 
 PROS AND CONS
 
@@ -62,9 +70,6 @@ CONS:
 - nobody is that into Ruby anymore; it's like they've all moved onto the next cool thing
 - as is the case with all scripting languages, it's generally slower at runtime
 
-
-
-
 • RAILS:
 PROS:
 - it's relatively easy to learn and based on its popularity there is a lot of information out there for debugging
@@ -78,8 +83,6 @@ CONS:
 - its a heavy framework
 • What do you like about Rails?
 - "convention over configuration"
-
-
 
 • NODE:
 PROS:
@@ -103,14 +106,11 @@ CONS:
   - requires a lot of set up
   - theres a lot of extra code involved in formatting components which minimizes for bigger projects but could be wasteful for smaller
 
-
 CSS:
 PROS:
 - It's fun and with CSS knowledge comes a lot of cool functionality and effects
 CONS:
 - CSS bugs can be so darn puzzling (footer example)
-
-
 
 • MONGODB:
 PROS:
