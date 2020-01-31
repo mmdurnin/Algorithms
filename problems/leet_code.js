@@ -385,4 +385,8 @@ function findX(arr, x) {
 
 // console.log(findX([1, 2, 3, 4, 5, 6, 7], 5));
 
-console.log(findClosestElements([1, 2, 3, 4, 5], 4, 3));
+// console.log(findClosestElements([1, 2, 3, 4, 5], 4, 3));
+
+// Given an unsorted integer array, find the smallest missing positive integer.
+// input: array of unsorted integers
+// output: number = first positive number missing from the array

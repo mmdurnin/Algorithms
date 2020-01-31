@@ -143,6 +143,46 @@ function pathFinder(directories, targetFile) {
   return null;
 }
 
-console.log(pathFinder(desktop, "app_academy_logo.svg"));
-console.log(pathFinder(desktop, 'everlong.flac'));           
-console.log(pathFinder(desktop, 'sequoia.jpeg'));             
+// console.log(pathFinder(desktop, "app_academy_logo.svg"));
+// console.log(pathFinder(desktop, 'everlong.flac'));           
+// console.log(pathFinder(desktop, 'sequoia.jpeg'));             
+
+function productSum(array) {
+  let sum = 0;
+  for (let i = 0; i < array.length; i++) {
+    let ele = array[i];
+    if (!Array.isArray(ele)) {
+      console.log("sumbefore")
+      console.log(sum)
+      sum += (ele);
+      console.log("sumafter")
+      console.log(sum)
+    } else {
+      sum = deeperSums(sum, ele, 2)
+    }
+  }
+  return sum;
+}
+
+function deeperSums(sum, array, k) {
+  console.log("sum")
+  console.log(sum)
+  console.log("array")
+  console.log(array)
+  for (let i = 0; i < array.length; i++) {
+    console.log("we're in the for loop")
+    let ele = array[i];
+    if (!Array.isArray(ele)) {
+      console.log("it's not an array")
+      sum += (k * ele);
+    } else {
+      console.log("it is an array")
+      sum = deeperSums(sum, ele, k + 1)
+    }
+  }
+  return sum;
+}
+
+// console.log(productSum([1, 2, 3, [4, 5, [8, 9, 10], 11], 12]))
+// console.log(productSum([1, 2, 3, 4, 5]))
+// console.log(productSum([[[[[5]]]]]))
