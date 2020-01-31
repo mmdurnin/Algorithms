@@ -1,0 +1,77 @@
+1. scope of design / focus
+- who are our users? ---> patients (need info on doctors)
+- what are our users able to do? --> users can fill out a questionnaire which will "match" them
+    follow up: - are they able to select specific doctors or only fill out questionnaire?
+               - can they change doctors?
+                 ---> focus on initial setting up patients with doctors
+- Does this problem ask me to choose matching traits or can we assume that they're already selected?
+- When do users fill out this questionnaire? (Is it required for signing up? Should I be designing sign up as well?)
+
+* methods: Update user information
+* Assign doctor
+* Get user information?
+
+2. High level architecture
+Users table for basic information
+Users table for traits
+Doctors table for basic information
+Doctors table for traits
+Joins (when we generate a match, we can store doctor and patient together)
+
+browser(user) --> load balancer --> server (generate match) --> db
+                                    select * doctors from AREA
+
+interaction: POST to user traits
+interaction: GET user traits
+interaction: generate match (POST)
+
+3. What is this "matchmaking" method doing?
+- we have our own traits that we deam to be the most important
+• type of doctor (obgyn, family medicine, pediatrics, general, etc)
+• **location (we want clients in SF to be matched with doctors in SF)
+- we ask our new patient to identify important characteristics in their care provider
+• gender
+• Socioeconomic background ( doctor who can empathize with your background )
+• Cultural background ( doctor who understands you care values )
+• Doctor who is accepting of holistic alternatives
+• Doctor who has training in psych trauma
+• weekend availability
+• patient load
+--> patient is going to select answers to these (i.e., "holistic medice alternatives dropdown: Y/N")
+--> patient is going to rank each of the fields
+--> generate a score for the matchmaking
+
+Follow up question: 
+IF THERE ARE NO EXACT MATCHES -- do we need a scoring system? 
+IF THERE ARE MULTIPLE EXACT MATCHES -- do we decide based on cient load or do we let patient select?
+(if always exact matches)
+(we decide)
+
+db schema
+users: id, name, age, sex, gender, location, matched?
+doctors: id, name, age, sex, gender, location
+users-traits: practice (unique), location, gender?, SSE?, cultural?, holistic?, weekends?, psych?
+doctors-traits: patient-load, location, practice, culture, gender, holistic, weekends, psych
+joins: patient-id, doctor-id
+
+api:
+POST /patient-care (create user record (foreign key user-id), all fields filled for patient-traits db)
+GET /patient-care/:id
+POST /patient-doctor-match
+
+
+wireframes:
+header (user info, update user info)
+footer (locations, about, etc)
+* questionnaire (trait questionnaire) -- only thing visible to unmatched users
+-- frontend url (/new-patient-form)
+whole page = one form
+-- "submit" 
+    --> post user traits
+    --> frontend url (/patient-form-review)
+-- "confirm"
+    --> post /match-patient {data: patient-id}
+    --> frontend url /profile/your-care
+* you-care
+    --> doctor bio 
+    --> GET request doctor info
