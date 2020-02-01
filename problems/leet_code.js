@@ -396,6 +396,28 @@ var firstMissingPositive = function (nums) {
     console.log(mergeSort(nums))
 };
 
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var firstMissingPositive = function (nums) {
+    nums = mergeSort(nums)
+    let count = 1
+    for (let i = 0; i < nums.length; i++) {
+        console.log(i)
+        console.log(count)
+        if (nums[i] > 0 && nums[i] !== count) {
+            console.log(nums)
+            console.log(nums[i])
+            console.log(count)
+            return count
+        };
+        if (nums[i] > 0 && nums[i] === count) count++;
+        if (nums[i] > 0 && nums[i + 1] === nums[i]) count--;
+    };
+    return count;
+};
+
 function mergeSort(nums) {
     if (nums.length < 2) return nums;
 
@@ -403,7 +425,12 @@ function mergeSort(nums) {
     let left = nums.slice(0, midIdx);
     let right = nums.slice(midIdx);
 
-    return sort(mergeSort(left), mergeSort(right));
+
+    let leftSort = mergeSort(left);
+    let rightSort = mergeSort(right);
+
+
+    return sort(leftSort, rightSort);
 }
 
 function sort(left, right) {
@@ -413,14 +440,6 @@ function sort(left, right) {
         merged.push(left[0] > right[0] ? right.shift() : left.shift());
     }
 
-    console.log("merged")
-    console.log(merged)
-    console.log("left")
-    console.log(left)
-    console.log("right")
-    console.log(right)
-    console.log("merged after")
-    console.log(merged.concat(left, right))
     return merged.concat(left, right);
 }
 
