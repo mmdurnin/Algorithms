@@ -1,0 +1,667 @@
+• What is Big O notation, and why is it useful?
+Big O notation is used to describe the complexity of an algorithm, and how expensive it will be for the machine to run the algorithm in the worst case scenario.
+O(1) - Constant: independent of input size
+O(log(n)) - Logarithmic: running time grows in proportion to the logarithm of the input size (at first relatively expensive and goes down)
+O(n) - Linear: directly proportional to input size 
+O(n * log(n)) - Quasilinear / Loglinear: Executes n number of operations, each of which runs in logarithmic time
+O(n^2) - Quadratic: Executes n number of operations, each of which requires n number of operations
+O(n^c) - Polynomial: C = fixed constant, executes n number of operations, each of which requires n number of operations a constant number of times
+O(c^n) - Exponential: Algorithms growth multiplies by the constant with each additional unit of input size 
+       (e.g., O(2^n) doubles with each addition to the input data set)
+       ex: generate all subsets/ combinations in an array
+O(n!) - Factorial: Think: a recursive call that has n # of recursive calls in each stack
+       n! = (n) * (n - 1) * (n - 2) * ....
+       ex: Permutations (all possible combinations AND orders)
+
+• What is the DOM?
+Document Object Model
+Programming interface to web pages
+**Represents the page as objects and nodes
+Programs can connect to the DOM to read, write and manipulate content
+Opening devtools gives you a visual representation/ map of the DOM
+Gets created from HTML document
+
+• What is the event loop?
+While javascript in single threaded, it operates asynchronously with its use of asynchronous functionsthe event loop.
+Javascript uses a callstack to keep track of order in which to execute functions. 
+In this way, it does not necessarily read top to bottom. 
+Some functions will be added to the stack with event listeners, some as callbacks, there are also functions that will trigger a web api request (i.e., setTimeOut). This predicts the order in which things are added to the stack.
+When setTimeOut is executed, the function is taken out of the stack and is handled by a web API which in this case will track the amount of time.
+When the specified amount of time has been reached, the setTimeOut callback will be sent to another component of the operation called the callback queue.
+My understanding is that the actual event loop is a very small part of this: it will look at the stack and look at the queue. If there isn't anything in the stack, it will pull the first thing out of the queue and add it to the stack to be executed.
+But I think we generally think of the whole process as the event loop.
+
+
+• What is a closure?
+A closure is a function that can be stored as a variable that has the special ability of being able to access the scope of another function.
+Specifically, it has access to the scope (the "lexical environment") in which it was defined. 
+Another definition that I like: A closure is a function plus a connection to the variables that exist at its “birth place”
+Its called a closure because it is an operation where one function closes over the other.
+* A nested function's scope includes variables declared within the function where it was defined
+When the function has finished executing, that scope is usually destroyed/ irrelevant (unaccessable)but when you create an inner function, 
+the variables from the outer function are not destroyed after execution because the inner function still has access to it
+Uses: 
+1. Private state - in ruby you can write functions under a private property but you cannot do this with JavaScript.
+In JavaScript, we can emulate the private keyword by using closures.
+Variables defined inside of a function can only be accessed in the scope of that function. 
+2. Readers and writers - Change the values of local variables by functions defined inside of it.
+function accessLocal() {
+    var local = 10
+}
+-- see how you can never change local?
+function accessLocal() {
+    var local = 10
+    return {
+        seeLocal: function() {
+            return local
+        }
+        changeLocal: function(increment) {
+            local += increment
+            return local
+        }
+    }
+}
+maintainLocal = accessLocal()
+maintainLocal.seeLocal() --> 10
+maintainLocal.changeLocal(10) --> 20
+** 3. They can also be used by functions to store state that persists across function calls. 
+
+Think of it like this: when a function is invoked with an argument, the function will run, return a value, and the state will not change
+A closure will hold onto the state of the outer function at the time in which it was invoked
+
+
+
+
+• How is prototypal inheritance different from classical inheritance? 
+- classical inheritance describes a system that is more taxonomy-based: a more specific class will inherit from a more general class
+  with prototypal inheritance, the inheriting object is more like an example of the ancestor object
+- classical inheritance is like passing on a blue print: descriptions of format and instantiation get passed down
+  prototypal inheritance is like delegation and it involves a prototype chain (explained below), but in brief:
+        each ancestor in the chain will check if they have the method or attribute being searched for and then they'll ask their ancestors
+- classical inheritance separates classes with instances and happens through instantiation (you have the class that describes and the instances)
+  prototypal inheritance is more like linking on object to the other (one object points to another)
+
+
+• How does prototypal inheritance work?
+First, some vocab:
+PROTOTYPE: the object that holds methods for the inheritors, held by the ancestor
+(ex: Array.prototype.reverse --> The Array prototype holds a function called reverse that all instances of the Array can have access to)
+__PROTO__: internal object that holds info about the instance and pointers to its ancestors prototype (points to prototype it was created from)
+prototype = property of class constructor (this is what my children will inherit) and proto = property of instance (this is what I have inherited)
+1. When a method gets called on an object, the search starts with direct methods on the object 
+2. It then looks on the __proto__ of the object, which points to the prototype of the object it inherited from
+3. Prototypes also have a proto which points to greater ancestor's prototype
+So if I said "sparky.__proto__.__proto__" that would point to he prototype of animal
+DIY inheritance function:
+Function.prototype.inherits = function(Parent) {
+  function Surrogate() {}
+  Surrogate.prototype = Parent.prototype;
+  this.prototype = new Surrogate();
+  this.prototype.constructor = this;
+};
+
+
+• What is a higher order function? 
+A function that takes a function as an argument and/or returns a function.
+
+• What type of language is Javascript? (object oriented vs functional)
+JavaScript is both object oriented and functional
+
+• Functional vs OOP:
+                            FUNCTIONAL                                                  OOP
+Definition          Emphasizes on evaluation of functions                       Based on concept of objects
+Data                Uses immutable data                                         Uses mutable data
+Model               Uses declarative programming model                          Uses imperative programming model
+Support             Supports parallel programming                               Does not support parallel programming
+Execution           Statements can be executed in any order                     Statements should be executed in particular order
+Iteration           Recursion used for iterative data                           Loops used for iterative data
+Element             Basic elements are variables and functions                  Basic elements are objects and methods
+Use                 Few things with more operations                             More things with fewer operations
+
+• What is event bubbling and how does it work? 
+(this is also a bad question IMO, but a lot of people like to ask it too)
+An event will bubble up an element's ancestors. If there is an event listener on an ancestor, an action will fire.
+
+• What is REST, and why do people use it?
+REST stands for representational state transfer
+It is a set of principals related to client/server HTTP requests
+APIs that adhere to RESTful architecture are making use of specific verbs, resources and format that can be easily understood by the server
+The client can say get me information, change this information, delete this information 
+
+• My website is slow. Walk me through diagnosing and fixing it. 
+What are some performance optimizations people use, and when should they be used?
+- Event delegation can be used when you have the same action that needs to be registered to a bunch of child elements
+  (reduce load time by sticking the event listener on the parent element - the events bubble)
+- Minimizing calls to the backend 
+  - Use a sprite (= make a collage of images rather than separate requests and zip them up for their delivery, unzip them on the front end)
+  - set up browser caching (= set e-tags on the request headers for the cached info, the server will compare the date last sent to the date last updated)
+- Lazy loading
+- Be strategic on where you're loading your javascript files (or launch them only after an event listener is triggered saynig that the page is fully loaded)
+- Use a CDN
+
+• What frameworks have you used? What are the pros and cons of each? 
+RAILS:
+PROS:
+- it's relatively easy to learn and based on its popularity there is a lot of information out there for debugging
+- Because it's so widely used, it's also very reliable
+- it accepts a lot of useful libraries (or "gems")
+- it requires a strong adherence to convention
+  -- easier to understand other people's code, more readable, easier to collaborate
+  -- minimizes the amount of code you need to write in the future
+CONS:
+- strong coding standards / strictness is a tradeoff for flexibility
+- its a heavy framework
+REACT
+Technically react is only a library because it only gives you means to build components and render them in the DOM 
+But I've talked to a lot of people who casually refer to it as a framework because its a much larger ecosystem with its own specialized language, tools etc
+So I wanted to bring up that I have used it 
+PROS:
+- It's so organized!
+- React creates a virtual DOM which speeds up rerendering time 
+CONS:
+- Not extremely necessary for smaller projects
+  - requires a lot of set up
+  - theres a lot of extra code involved in formatting components which minimizes for bigger projects but could be wasteful for smaller
+
+• Why do people use frameworks? What kinds of problems do frameworks solve?
+- Frameworks make learning easier. Learning is much more achievable within some type of structure where you can make connections and operate by rules and frameworks make this possible.
+- Frameworks make collaboration easier because its easier to understand another person's code when they're writing within a framework
+- Easier to debug 
+  -they have more rules, meaning that the behavior of your code is going to be more predictable
+  -more public info, resources, documentation for debugging
+- Usually also a lot of libraries that will help you reach your objective
+
+• Explain What Is The Lazy Loading?
+Lazy loading is an optimization technique where on page load, you only load the required resources and elements on to the page
+and then others are loaded as needed
+
+• What is the difference between null and undefined?
+Both represent empty values but null is a type object and by convention, when you want to assign nothing, you set null
+whereas undefined is returned when nothing was assigned, however you can set undefined (in practice you set null)
+
+• What is scope?
+The scope of a method is the set of variables available inside of the method, including:
+- variables defined inside of the method
+- variables declared before function was defined
+- arguments
+
+• Explain What Is An IIFE?
+- Immediately Invoked Function Expression (invoked by adding "()")
+
+• What Is A Callback Function?
+- A callback is a function that is launched/ executed on completion of another function
+- This is helpful because sometimes we don't want a function to be executed until another has finished
+
+• Tell Me Why Do We Recommend External Css Or Javascript Versus Inline?
+- HTML code is never cached, external dependencies like CSS and JS sheets will be cached by the browser, so it reduces the amount of http requests when the user clicks through the browser
+- The HTML code will weigh more with more inline styling, so inline styling will reduce the load speed of your HTML
+  (Using external CSS files will reduce HTML file size which helps with fast rendering if webpage)
+- It's easier to work off of a collective, organized style sheet when you need to make styling changes, rather than scanning the HTML
+- If everything were inline you would have to indivually apply the same style to elements that could potentially have a shared classname (less DRY)
+
+• Explain What "this" Is In Javascript?
+"This" refers to the object that is being referenced by the current piece of code which has its own context and scope
+
+• Do You Know What Is Cors? How Does It Work?
+- cross-origin resource sharing
+- allows for HTTP requests between sites so that one origin site can potentially grab resources from another domain 
+- CORS adds new HTTP headers that provide access to permitted origin domains
+  If you're on a website and the code of that website is trying to send a request to an external site,
+  the browser is going to pick it up and say "hey this requires us to follow the CORS protocol, I'll whip up a request"
+  It sends an OPTIONS request (its an HTTP verb) to the server asking what its allowed to do
+  The server will respond with a list of available / supported methods
+  If what the client was trying to do is listed in that response, the browser will send that request in
+
+• Tell Me How Do You Clear A Floated Element?
+clear: both;
+
+? • Explain Why Table-less Layout Is Very Important?
+
+• Explain What Is An Anonymous Function?
+A function without a name (a function with a name is a function declaration), often instead assigned to a variable (which is a function expression):
+var x = function(a, b) {
+    console.log(a)
+    console.log(b)
+}
+
+• Explain What Is Ajax? Write An Ajax Call?
+AJAX stands for asynchronous javascript and xml
+Allows applications to send and receive information from a server asynchronously, without having to refresh the page
+$.ajax({
+    method: 'GET',
+    url: '/api/users/2'
+})
+
+• What Is Stringify?
+It's used to transform JSON into a string
+
+• What Are This And That Keywords?
+"this" refers to the object invoking the the function whose scope houses the "this" keyword
+Sometimes we can lose "this" by changing scope (like going a function deeper)
+To hold onto our "this" object, we say "let that = this", and that way we can reference the object without worrying if we've entered into a deeper scope
+
+• What Is Event Delegation?
+You can put an even listener on a parent element to avoid sticking separate event listeners on all of its child
+ elements, which should speed up your load time. The child elements will register events and the events will 
+ bubble up to the parent element. 
+
+• Why Do We Need To Use W3c Standard Code?
+W3C stands for World Wide Web Consortium
+It is an international community of member organizations that articulate web standards
+These standards ensure cross-platform compatability 
+(Ensure that all websites look and function the same across browsers)
+
+• What Is A Float?
+- A number that has a decimal point (floating decimal point)
+- CSS: a property that forces an element to float left/ right/ none/ inherit inside of its parentt body with neighboring elements wrapping around
+
+• How To Optimize The Page Using Front End Code Or Technology?
+(How To Increase Page Performance?)
+- Event delegation
+- Sprites
+- caching
+- External stylesheets
+- Minimizing server requests
+- Lazy loading
+- Use responsive design instead of using device-based redirects
+
+• Have You Ever Used A Css Preprocessor/precompiler? What Are The Benefits?
+- keeps code DRY with nesting and variable naming
+
+• Do You Know What Is The Importance Of The Html Doctype?
+An instruction to the web browser about what version of the markup language the page is written in
+It's written before the HTML tag
+
+• What Is The Difference Between Responsive And Adaptive Development?
+Responsive is fluid and flexible
+Adaptive adapts to the detected device/screen size.
+
+• Tell Me Where Do You Place Your Javascript On The Page?
+It depends, there isn't one set place where you need to place it but without given instructions (e.g., wait for the page to load),
+it's in good practice to place it at the bottom so that the DOM is painted before loading the Javascript
+Of course it depends, if you need immediate functionality from your script, putting it at the bottom would require a wait for all resources to load first. 
+
+• Explain The Difference Between Inline, Block, Inline-block And Box-sizing?
+Inline - you cannot set height or width. The height and the width will expand or shrink to fit exactly the size of the content
+       - you CAN still set padding and border
+       - you can set width-wise margin but cannot set top and bottom margin
+Block  - in term so sizing, you can do anything
+       - neighboring elements will fall down to the next line (it reserves the whole page, width-wise)
+Inline-Block - the perfect combination of the two
+             - it takes up just as much room as it needs and doesn't effect neighboring elements more than it has to
+Box-sizing - irrelevant to this question. It's not in comparision of the others. 
+Box-sizing is a property that comes with border-box and content-box.
+    border-box will set the element so that that height and the width account for the whole element, not just the content inside
+    content-box means that just the content will account for size. Any additional padding, etc will be extra
+
+• Explain What Is a web Application?
+A web application is a computer program that utilizes web browsers and web technology to perform tasks over the Internet.
+Here is the typical web app flow:
+User triggers a request to the web server over the Internet, either through a web browser or the application’s user interface
+Web server forwards this request to the appropriate web application server
+Web application server performs the requested task – such as querying the database or processing the data – then generates the results of the requested data
+Web application server sends results to the web server with the requested information or processed data
+Web server responds back to the client with the requested information that then appears on the user’s display
+
+• Explain What Is The Difference Between A Prototype And A Class?
+A PROTOTYPE is just an object. 
+Every function created has a prototype 
+Prototypes are responsible for defining the behavior of instances but they behave like any other object, hold any type of info, and be used by anything
+A CLASS is a special type of object with special properties and methods
+It is responsible for creating instances 
+Instance behavior in a classist language is defined with special syntax and/or special methods invoked on the class
+
+• What Is The Difference Between Call And Apply?
+Call: comma
+Apply: array
+owner.method.apply(myThis, [other, args])
+owner.method.call(myThis, other, args)
+ex:
+var person1 = {name: 'Marvin', age: 42, size: '2xM'};
+function sayHello(greeting) {
+    console.log(greeting + this.name + "!")
+}
+sayHello.call(person1, "Hi there")
+
+• Explain The Difference Between Visibility:hidden; And Display:none?
+Visibility hidden is pretty much just transparent. It's still there you just can't see it.
+Display non takes the element out of the DOM
+
+• Do You Know What Is A Sprite? How Is It Applied Using Css? What Is The Benefit?
+It's like a collage of images merged togetther on a single master file that can be compressed and opened on the front end 
+to speed up content delivery
+
+• Explain The Difference Between Static, Fixed, Absolute And Relative Positioning?
+STATIC: default, *no z-index*, no nudging, takes up normal space, informally considered "not positioned"
+- overflow: hidden only works on other static elements, so if its not working, change it to positin relative
+RELATIVE: initially displayed in same space as it would static but it can be nudged "relative" to its original (static) position
+- creates a coordinate system for its absolute children
+- allows z-index
+- switch from static to relative with no consequences
+- Most often used when you want to position children absolute
+ABSOLUTE: without setting left /right whatever, it will be positioned where it would have been positioned within document flow
+- lifted out of space on the page
+- offset coordinates are positiond relative to nearest ancestor that is not position static
+- margins do not collapse
+- left/ right/ top/ bottom properties will stretch it
+- the box of the element will take up minimal space unless overwritten by width/ height
+FIXED: offset coordinates are relative to the window, *not the document* - since not all windows are the same size, this could result in the element being positioned weird
+- stays in place relative to the window, even on scroll
+- like absolute: allows z-index, the box takes minimal size unless specified by height and width, margins can be set but do not collapse, left/ right etc can stretch element
+- does not take space on page, lifted up
+- also creates coordinate system for absolute children
+
+
+• What Is The Difference Between Html And Xhtml?
+xhtml stands for extensible hypertext markup language
+its stricter than Html
+
+• What Is A Javascript Object?
+A collection of data as key value pairs
+
+
+• Explain The Difference Between == And === ?
+== disregards type
+
+• Tell Me Are You Familiar With Jasmine Or Qunit?
+I have used Jasmine but only as a form of tsting my own code, not writing the tests
+
+• What Is The Difference Between A Host Object And A Native Object?
+
+
+• What is an API?
+Application Programming Interface
+Part of the server that receives requests and builds responses
+Everytime you visit a page on the web, you are interracting with a remote server's API
+
+• What is callback hell?
+In an attempt to write code that reads from top to bottom, where functions are executed one after the other,
+you may end up in callback hell. 
+"The pyramid of doom" (because each line of a new function will indent, causing your code to look like half of a pyramid)
+Callback hell is caused by poor coding practices. Three rules to follow:
+1. keep code shallow (if you give callbacks names, you don't have to nest them - you can just call them)
+2. Modularize (separate into modules / new files) - that way you can look through code, see that a function was called to handle x action, and continuee reading rather than sloothing through x function
+   Also, when you modularize you can reuse your functions on whatever files will need them
+3. Handle every single error
+
+• What is react?
+React is a JavaScript User Interface library 
+Used for simplifying by building User Interface components
+Uses a virtual DOM which increases efficiency to state changes by only rerendering effected elements on the page
+--> it does this by using a diffing algorithm between the virtual dom and the real dom
+    Whenever anything may have changed, the entire UI will be re-rendered in a Virtual DOM representation.
+    The difference between the previous Virtual DOM representation and the new one will be calculated.
+    The real DOM will be updated with what has actually changed. This is very much like applying a patch.
+
+• Pros of react
+    - creates a virtual DOM which speeds up rerendering by only updating the real dom with needed changes
+    - Uses one way data binding: ReactJS allows for direct work with components and uses downward data binding to ensure that changes 
+      of child structures don’t affect their parents. That makes code stable.
+
+• React lifecycle methods: what are they? How purpose to they serve? List and talk about.
+
+• What are promises, what are their 3 states? 
+- A promise is an object that represents completion or failure of an asynchronous operation
+- A promise can be:
+  * fulfilled: action related to promise succeeded
+  * rejected: action related to promise failed
+  * pending: hasn't fulfilled or rejected yet
+
+• CSS - nth element / first child
+
+• What is shadow DOM?
+
+• What are psuedo elements? What are psuedoclasses? Psuedo content?
+PSUEDO CONTENT: Used to inject content INSIDE of an element either at the beginning or the end
+- default styling inline
+- ex: 
+h1:before {
+    content: ___
+}
+(so you need to specify "content:" to inject content into it)
+- you can inject string content or attribute content
+- adding attribute content ex: 
+a:after {
+  content: " (" attr(href) ")";
+}
+
+• What is "this"?
+
+• What is prototypal inheritance?
+
+• DIY prototypal inheritance
+
+• Function declaration vs function expression
+declared function: function myFunction(x) {....
+  - declared functions are hoisted
+  - cannot be self-invoked
+function expression: var x = function(x) {...
+  - function expressions are not hoisted
+  - can be self-invoked
+
+
+• What is hoisting?
+Javascript's default behavior for moving declarations to the top of the current scope
+* Hoisting applies to variable declarations and function declarations *
+ex: const x (variable declaration)
+    function maureensFunction(x) {...} (function declaration)
+A declared function / variable can be called before it was declared
+
+• What is functional programming? 
+
+• What are pure functions?
+
+• What is type coercion?
+
+• What is the difference between 2-way data bindinng and 1-way data flow?
+
+• React - why can't you use "state="? (Have to you "this.setState")
+
+• What are fragments?
+
+• How to do code splitting in React? 
+-What is code splitting?
+-What is lazy loading?
+Lazy loading is an optimization technique where only the required sections of the page are loaded
+
+• What is redux?
+Redux is a library that is used for managing the state of the DOM
+-What are some alternatives to redux?
+Angular
+View.js
+Backbone
+
+
+• What is middleware?
+A set of methods that are triggered when a dispatch gets sent to the store
+Acts as a middleman to interact with state pre and post changes
+
+• Redux saga vs redux thunk
+
+• What is a framework?
+
+• What is "use strict"?
+Adding "use strict" do the document creates a mode that watches for/prohibits variable declaration without const, var etc. 
+Without "use strict", you could say x = "elephant" without erroring out. This could create a problem if you assign a variable 
+inside of a function that is meant to only be scoped to that function (without declaring, it will be globally scoped). 
+"Use strict" mode will return an error when assigning a variable without declaring it with const/ var/ etc.
+
+• What is webpack?
+
+• What are the two main types of values in JavaScript?
+1) Primitives
+2) Objects 
+
+• What are the primitives in JavaScript and what are the types?
+Primitives are Javascript values that are not objects and are immutable, meaning that they themselves cannot be altered.
+Think: you can assign a string to x, but you cannot alter the string. You actually have to reassign
+x.toUpperCase() will not mutate the string assigned to x. You have to say x=x.toUpperCase(). Same with x.push("more letters"). That doesnt work
+There are 5-7 primitives, depending on who you're asking. Here are the 7:
+- null
+- undefined
+- string
+- number
+- bigint
+- boolean
+- symbol
+Besides null and undefined, all values have object equivalents that wrap around the primitive values.
+
+
+• Describe a few ways to communicate between a server and a client. 
+Describe how a few network protocols work at a high level (IP, TCP, HTTP/S/2, UDP, RTC, DNS, etc.)
+
+• What is the first argument typically passed into a node.js callback handler?
+error
+• Why do you think thats usually done that way?
+Becuase of a lot of uncaught exceptions that can happen, (in node.js it's not as easy to catch exceptions by the main process),
+    so it's just a best practice to put that out there, by putting it as the first argument in the module it warns the developer that
+    this can be an error
+
+
+
+• When is recursion appropriate?
+    - Recursion is used to solve problems that can be decomposed into smaller versions of the same problem.
+
+• Tell Us The Purpose Of Each Of The Http Request Types When Used With A Restful Web Service?
+GET: Client tells server to provide some type of specified content
+PATCH: Client tells server to make a change
+PUT: Also saying make a change but less used because I think it replaces all of the info rather than changing the existing info
+POST: Client tells server to accept/ create new content (like creating a new user account)
+DELETE: Client tells server to destroy specified content
+
+• What happens when you type in www.google.com?
+- Every DNS (Domain Name Server) corresponds to and IP address
+1. Browser will check its own DNS cache, then the operating system's cache, then the router's cache, then the internet service provider (ISP)'s
+   DNS cache in search of the the corresponding IP address
+2. The browser builds the the HTTP request (in this example, a GET request)
+3. The browser sends the request over the network
+  (*border gateway protocol*)
+4. (Possible interaction with proxy server / load balancer / CDN / etc.)
+  - CDN: Content Delivery Network, a network of servers in place to deliver content over the shortest distance so that it 
+    can be more quickly delivered anywhere on the globe
+5. Server parses request string and routes it using Regex on the request path
+6. The application layer assembles its response. There could be a possible connection to the database server
+7. The response is sent back over the network with a status code 
+8. The client parses the response
+  - checks the headers (in particular the status code which will indicate the status of the response)
+9. Browser goes through the HTML and paints the DOM
+10. The browser might build a new GET request for each of the CSS / JS tags (objects embeded in the HTML), go through the same steps & run code before proceeding
+
+• What is a CORS request? (what does CORS stand for?)
+Cross-Origin Resource Sharing (CORS) is a mechanism that uses additional HTTP headers to tell browsers to give a web application running at one origin, 
+access to selected resources from a different origin.
+
+• What are the HTTP status codes?
+1xx - informational
+2xx - success
+3xx - redirection
+4xx - client error
+5xx - server error
+
+• My website is slow. Walk me through diagnosing and fixing it. 
+- Minimize database queries by grabbing all the required info at once and parsing it
+- Event delegation can be used when you have the same action that needs to be registered to a bunch of child elements
+  (reduce load time by sticking the event listener on the parent element - the events bubble)
+- Minimizing calls to the backend 
+  - Use a sprite (= make a collage of images rather than separate requests and zip them up for their delivery, unzip them on the front end)
+  - set up browser caching (= set e-tags on the request headers for the cached info, the server will compare the date last sent to the date last updated)
+- Lazy loading
+- Be strategic on where you're loading your javascript files (or launch them only after an event listener is triggered saynig that the page is fully loaded)
+- Use a CDN
+
+• example of an interesting technical problem you solved
+• example of an interpersonal conflict you overcame
+• example of leadership or ownership
+• story about what you should have done differently in a past project
+• piece of trivia about your favorite language, and something you do and don't like about said language
+• question about the company's product/business
+• question about the company's engineering strategy (testing, Scrum, etc)
+
+
+PROS AND CONS
+
+• RUBY:
+PROS:
+- readable & verbose
+  -- really easy to learn
+  -- really easy to understand other people's code when you're working on a collaboration
+- object oriented
+- basically it's an easy language
+CONS:
+- nobody is that into Ruby anymore; it's like they've all moved onto the next cool thing
+- as is the case with all scripting languages, it's generally slower at runtime
+
+• RAILS:
+PROS:
+- it's relatively easy to learn and based on its popularity there is a lot of information out there for debugging
+- Because it has a large community, it's also very reliable
+- it accepts a lot of useful libraries (or "gems")
+- it requires a strong adherence to convention
+  -- easier to understand other people's code, more readable, easier to collaborate
+  -- minimizes the amount of code you need to write in the future
+CONS:
+- strong coding standards / strictness is a tradeoff for flexibility
+- its a heavy framework
+• What do you like about Rails?
+- "convention over configuration"
+
+• NODE:
+PROS:
+- all the benefits you would get with javascript
+- known for offering high performance
+- it also has a large community
+- uses javascript which makes it really easy to pick up if you already know javascript
+- asynchronous event-driven IO (input/output)
+  good for building I/O network-intensive applications
+- huge number of free tools
+CONS:
+- not as good for building CPU intensive applications
+  like if you sent a request to the backend that required computational work, it would be blocked because its single threaded
+
+REACT
+PROS:
+- It's so organized! Convention of dividing into components -> smaller components
+- React creates a virtual DOM which speeds up rerendering time 
+CONS:
+- Not extremely necessary for smaller projects
+  - requires a lot of set up
+  - theres a lot of extra code involved in formatting components which minimizes for bigger projects but could be wasteful for smaller
+
+CSS:
+PROS:
+- It's fun and with CSS knowledge comes a lot of cool functionality and effects
+CONS:
+- CSS bugs can be so darn puzzling (footer example)
+
+• MONGODB:
+PROS:
+- scalable and fast 
+- supports a big amount of data 
+CONS:
+- doesn't support foreign keys or joins
+- less intuitive but maybe that's because I learned postgreSQL first
+
+• POSTGRESQL:
+PROS:
+- intuitive, easy to use
+- relational database meaning support for joins and foreign keys
+CONS:
+- becuase it is relational and supports joins and transactions, it can't handle as high of a load compared to a document-oriented database
+
+• JAVASCRIPT:
+PROS:
+- popular, large community, wealth of info and resources publically available for just about anything you want to do
+- dynamic
+  - can execute many behaviors at runtime as opposed to having to be compiled
+  - basically you can do just about anything with it: you can put an event listener on a element with a value assigned to it that changes its value (bad example i guess)
+- weakly typed: it will easily allow you to coerce one type into another
+- multiparadigm: supports functional and object-oriented programming
+- single-threaded AND concurrent 
+- never-blocking
+CONS:
+- becuase it's weakly-typed, sometimes you will encounter unexpected behaviors
+- too many curly-braces and semicolons
+GENERAL:
+- prototype-based
+
+

@@ -183,24 +183,24 @@ var threeSum = function (nums) {
     return Array.from(result);
 };
 
-var mergeSort = function(arr) {
-    if (arr.length <= 1) return arr;
-    let mid = Math.floor(arr.length / 2)
-    let left = arr.slice(0, mid);
-    let right = arr.slice(mid);
+// var mergeSort = function(arr) {
+//     if (arr.length <= 1) return arr;
+//     let mid = Math.floor(arr.length / 2)
+//     let left = arr.slice(0, mid);
+//     let right = arr.slice(mid);
 
-    let leftSorted = mergeSort(left);
-    let rightSorted = mergeSort(right);
-    return sort(leftSorted, rightSorted);
-}
+//     let leftSorted = mergeSort(left);
+//     let rightSorted = mergeSort(right);
+//     return sort(leftSorted, rightSorted);
+// }
 
-var sort = function(left, right) {
-    let sorted = [];
-    while (left.length && right.length) {
-        (left[0] < right[0]) ? sorted.push(left.shift()) : sorted.push(right.shift())
-    }
-    return sorted.concat(left, right)
-}
+// var sort = function(left, right) {
+//     let sorted = [];
+//     while (left.length && right.length) {
+//         (left[0] < right[0]) ? sorted.push(left.shift()) : sorted.push(right.shift())
+//     }
+//     return sorted.concat(left, right)
+// }
 
 
 // console.log(threeSum([-1, 0, 1, 2, -1, -4], 0))
@@ -390,3 +390,39 @@ function findX(arr, x) {
 // Given an unsorted integer array, find the smallest missing positive integer.
 // input: array of unsorted integers
 // output: number = first positive number missing from the array
+
+
+var firstMissingPositive = function (nums) {
+    console.log(mergeSort(nums))
+};
+
+function mergeSort(nums) {
+    if (nums.length < 2) return nums;
+
+    let midIdx = Math.floor(nums.length / 2);
+    let left = nums.slice(0, midIdx);
+    let right = nums.slice(midIdx);
+
+    return sort(mergeSort(left), mergeSort(right));
+}
+
+function sort(left, right) {
+    let merged = [];
+
+    while (left.length && right.length) {
+        merged.push(left[0] > right[0] ? right.shift() : left.shift());
+    }
+
+    console.log("merged")
+    console.log(merged)
+    console.log("left")
+    console.log(left)
+    console.log("right")
+    console.log(right)
+    console.log("merged after")
+    console.log(merged.concat(left, right))
+    return merged.concat(left, right);
+}
+
+// console.log(firstMissingPositive([1, 2, 0]))
+console.log(firstMissingPositive([2, 1, 0]))

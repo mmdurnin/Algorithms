@@ -1,0 +1,20 @@
+• who are our users?
+• what can our users do? (what are focusing on? core functionality with regards to this discussion)
+
+(backend)
+- users are anyone with an account (user auth)
+- create new files
+- edit files
+- delete files
+- (share files?)
+- view files
+- shared editing capability (web sockets)
+
+(routes)
+- post /users
+- post /session
+- post users/:id/files
+- patch /files/:id
+- delete /files/:id
+- get users/:id/files
+- get /files/:id
