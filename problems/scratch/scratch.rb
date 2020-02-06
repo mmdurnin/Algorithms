@@ -25,3 +25,16 @@ def solve_matrix(after)
 end
 
 p solve_matrix([[2, 1], [5, 4]])
+
+
+# Given a sorted linked list, delete all duplicates such that each element appear only once.
+# Input: 1->1->2
+# Output: 1->2
+
+# class ListNode
+#     attr_accessor :val, :next
+#     def initialize(val)
+#         @val = val
+#         @next = nil
+#     end
+# end  

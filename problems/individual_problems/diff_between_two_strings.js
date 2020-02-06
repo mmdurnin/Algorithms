@@ -1,7 +1,7 @@
 function diffBetweenTwoStrings(source, target) {
 
     let store = [];
-    
+
     while (source.length && target.length && source[0] === target[0]) {
         store.push(source[0]);
         source = source.slice(1);
@@ -19,7 +19,7 @@ function diffBetweenTwoStrings(source, target) {
 function explore(store, edit, source, target) {
     store = store.concat(edit)
 
-    
+
     if (!source.length && !target.length) return store;
     if (!source.length) return append(store, "pos", target);
     if (!target.length) return append(store, "neg", source);
@@ -61,5 +61,3 @@ console.log(diffBetweenTwoStrings("CABAAABBC", "CBBC"))
 
 
 
-// Given an array of unique characters arr and a string str, 
-// Implement a function getShortestUniqueSubstring that finds the smallest substring of str containing all the characters in arr. Return "" (empty string) if such a substring doesn’t exist.
