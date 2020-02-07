@@ -8,7 +8,7 @@ Searches
 Data structures / ADTs
 Status codes
 Javascript ES5 vs ES6
-Binary
+Binary & other base numbers
 
 Searches
 Bredth first search
@@ -31,11 +31,22 @@ Trees
 Graphs
 Stack
 Queue
+Heaps
+Tries
 
 
 
 Technologies
 SQL
+Ruby
+Python
+Javascript
+JQuery
+React
+Redux
+Rails
+CSS
+AWS
 
 Misc
 Using big integers

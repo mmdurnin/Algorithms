@@ -1,0 +1,211 @@
+class Student:
+    def __init__(self, name, major, gpa, is_on_probation):
+        self.name = name
+        self.major = major
+        self.gpa = gpa
+        self.is_on_probation = is_on_probation
+
+    def on_honor_roll(self):
+        if self.gpa >= 3.5:
+            return True
+        else:
+            return False
+
+
+keelan = Student("Keelan", "Art", 3.0, True)
+print(keelan.on_honor_roll())
+
+# importing:
+# from docname import functionname OR
+# import docname
+
+# Inheritance
+class Chef:
+    def make_chicken(self):
+        print("The chef is making chicken")
+    def make_ravioli(self):
+        print("The chef is making ravioli")
+    def make_escargot(self):
+        print("The chef is making escargot")
+    def make_special_dish(self):
+        print("The chef is making bbq ribs")
+
+class ChineseChef(Chef):
+    def make_fried_rice(self):
+        print("The chef is making fried rice")
+    def make_special_dish(self):
+        print("The chef is making orange chicken")
+
+# python interpretor
+# like a sandbox where we can test out different commands/ functions
+
+
+keelan = Chef()
+keelan.make_chicken()
+# prints
+# "\" means don't exit string with next char so "Maureen\" is hungry" prints Maureen " is hungry
+hungry = "Maureen is hungry"
+hungry.isupper() # False
+hungry.upper() #"MAUREEN IS HUNGRY"
+hungry.upper().isupper() # True
+hungry.index("M") #0
+hungry.index("n is h") #6 (where it sttarts)
+hungry.replace("Maureen", "Ciara") # Ciara is  hungry
+num = 3
+str(num) # "3"
+
+# absolute value: abs(num)
+# raise to the power of: pow(3, 2) --> 3 raised to the power of 2
+# max of nums: max(4, 6)
+# min of nums: min(4, 6)
+# round: round(3.7) = 4, round(3.2) = 3
+
+
+# getting more math functions : from math import *
+# squareroot: sqrt(36)
+# round down: floor(3.7) = 3
+# round up: ceil(3.7) = 4
+
+
+
+Get input from a user
+input(prompt)
+input("tell me your name")
+username = input("tell me your name")
+print("Hello, " + username))
+
+** remember, the response is always a string
+if its an integer or something else, convert to integer
+int(num1) + int(num2) (for whole numbers)
+OR
+float(num1) + float(num2) (for decimal numbers)
+int(3.7) = 3
+
+
+madlibs
+sentence = "she went to the %s and bought some %s. Before she returned home, she was confronted
+by %s and she couldnt help but feel %s. Why does life always throw these %s. She decided that 
+from now on, she would always %s before leaving the house."
+place1 = input("Enter a place")
+noun1 = input("Enter a plural noun")
+noun2 = input("Enter a plural noun")
+adjective1 = input("Enter an adjective")
+noun3 = input("Enter a plural noun")
+verb1 = input("Enter a verb")
+
+maybe you could say print(sentence % place1, noun1, noun2, adjective1, noun3, verb1) ?? I'm not sure
+
+
+LISTS
+create a list
+friends = ["Keelan", "Ciara", "Maggie"]
+What can you put inside of a list? Anything.
+
+print(friends)
+print(friends[2])
+print(friends[-1]) == Maggie
+print(friends[1:]) == Ciara and Maggie
+
+I think lists are the same as arrays in other languages, even though theres also an array in python.
+
+*** add 2 lists together:
+numbers = [1, 2, 3, 4, 5]
+numbers.extend(friends) = [1, 2, 3, 4, 5, "Keelan", "Ciara", "Maggie"]
+friends.append("Jessica") = ["Keelan", "Ciara", "Maggie", "Jessica"]
+friends.insert(1, "Clare")) = ["Keelan", "Clare", "Ciara", "Maggie", "Jessica"]
+friends.remove("Clare") = removes Clare
+friends.count("Keelan") = 1
+friends.sort() = sorts alphabetically
+friends.pop() = same as pop in other languages
+friends.clear() = clears whole list
+
+
+Tuples = container where we can store different values
+kind of like lists but there are some differences
+coordinates = () <-- thats a tuple
+coordinates = (4, 5) ** IMMUTABLE
+cant change it, add things to it
+print(coordinates[0]) = 0
+coordinates[0] = 10 = ERROR (tuple does not support item assignment)
+tuples vs lists
+(besides tuples being immutable)
+tuples are used when data should never change
+
+
+dictionaries:
+monthConversions = {
+    "Jan": "January", 
+    "Feb": "February"
+}
+
+print(monthConversions["Jan"])
+monthConversions.get("Dec")
+monthConversions.get("Xyx", "Not a valid key") <-- provide default if it doesnt exist
+
+
+for index in range(10):
+    print(index)
+
+    (it will print 0-9)
+
+for num in range(3, 10):
+    print(num)
+
+    (it will print 3-9 I think)
+
+for index in range(len(friends)):
+    print(friends[index])
+
+
+exponent function
+take certain number and raise to specific power
+print(2**3) prints 2 to the third
+
+
+def raise_to_power(base, power)
+    count = 0
+    while count < power
+    base *= base
+    count += 1
+
+    return base
+
+
+def translatet(phrase):
+    vowels = "aeiouAEIOU"
+    translation = ""
+    for letter in phrase:
+        if letter in vowels:
+            translation = translation + "g"
+        else:
+            translation = translation + letter
+
+phrase = phrase.lower() (to make it lowercase)
+
+
+comments:
+# tthis is a comment
+'''
+this is a comment block
+'''
+better to use hashtags
+
+
+try / except
+
+try:
+    number = int(input("Enter a number: "))
+    print(number)
+except:
+    print("Invalid Input")
+
+try:
+    number = int(input("Enter a number: "))
+    print(number)
+except ZeroDivisionError as err:
+    print(err)
+except ValueError:
+    print("invalid input")
+
+--> specify error type so that you can catch specific errors and let others error out
+--> catch errortype as err = then print the error type
