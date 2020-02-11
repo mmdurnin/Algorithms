@@ -23,8 +23,8 @@ class Heap
         l = @max_size < @array.length - 1 ? @max_size : @array.length - 1
         @array.push(word)
         @word_array.push(word.word)
-        swap(@array, 0, l)
-        swap(@word_array, 0, l)
+        swap(@array, 0, @array.length - 1)
+        swap(@word_array, 0, @array.length - 1)
         heap_this(0, l)
     end
 
@@ -48,8 +48,10 @@ class Heap
 
         swap_idx = left_val < right_val ? left_idx : right_idx
 
+        p @word_array
         swap(@array, swap_idx, 0)
         swap(@word_array, swap_idx, 0)
+        p @word_array
         heap_this(swap_idx, 0)
     end
 
@@ -79,7 +81,9 @@ def k_frequent_words(arr, k)
         end
     end
 
-    p counts
+    # p counts
+    # p heap.array
+    # p heap.word_array
 
     # heap sort
     (0..end_idx).reverse_each do |l|
@@ -91,4 +95,4 @@ def k_frequent_words(arr, k)
 end
 
 
-p k_frequent_words(["helicopter", "news", "helicopter", "news", "pelican", "news", "helicopter", "fall", "nose", "news", "excuse", "news", "appreciate"], 3)
+p k_frequent_words(["helicopter", "news", "helicopter", "news", "pelican", "news", "helicopter", "fall", "nose", "news", "excuse", "excuse", "excuse", "excuse", "excuse", "excuse", "excuse", "news", "appreciate"], 4)
