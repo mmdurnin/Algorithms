@@ -199,7 +199,7 @@ function minChange(coins, amount, memo = {}) {
     }
 }
 
-console.log(minChange([1, 5, 10, 25], 100))
+// console.log(minChange([1, 5, 10, 25], 100))
 
 
 
@@ -251,7 +251,33 @@ function plusMinus(arr) {
 
 }
 
-console.log(plusMinus([-4, 3, -9, 0, 4, 1]))
-console.log("***")
+// console.log(plusMinus([-4, 3, -9, 0, 4, 1]))
+// console.log("***")
 
 // I don't remember what this function was trying to do...
+function mergeSort(array) {
+  if (array.length < 2) return array;
+  let midIdx = Math.floor(array.length / 2);
+  let left = array.slice(0, midIdx);
+  let right = array.slice(midIdx);
+
+  console.log(array)
+  console.log(left)
+  console.log(right)
+
+  let leftSort = mergeSort(left);
+  let rightSort = mergeSort(right);
+  return merge(leftSort, rightSort);
+}
+
+function merge(left, right) {
+    let arr = [];
+    while (left.length && right.length) {
+    console.log("***")
+    arr.push(left[0] > right[0] ? right.shift() : left.shift());
+    }
+    console.log(arr.concat(left, right))
+    return arr.concat(left, right);
+}
+
+console.log(mergeSort([5, 1, 3, 10, 4, 2]))
