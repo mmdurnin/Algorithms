@@ -16,7 +16,8 @@ isFull(): Checks whether Deque is full or not.
 
 class CircularDequeue {
     constructor(size) {
-        this.size = size
+        this.size = size;
+        this.store = [];
     }
 
     // insertFront(): Adds an item at the front of Deque. Return true if the operation is successful.
