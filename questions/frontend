@@ -194,6 +194,10 @@ The scope of a method is the set of variables available inside of the method, in
 • What Is A Callback Function?
 - A callback is a function that is launched/ executed on completion of another function
 - This is helpful because sometimes we don't want a function to be executed until another has finished
+Callback use cases:
+Event handles (only launch function on click event)
+background web requests
+timers
 
 • Tell Me Why Do We Recommend External Css Or Javascript Versus Inline?
 - HTML code is never cached, external dependencies like CSS and JS sheets will be cached by the browser, so it reduces the amount of http requests when the user clicks through the browser
