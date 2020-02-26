@@ -186,7 +186,11 @@ The scope of a method is the set of variables available inside of the method, in
 - arguments
 
 • What Is Variable Scope?
-- JavaScript variables are functionally scoped.
+- Scope refers to the context in which certain variables are available, including arguments, window variables, & locally defnied variables
+Also of note:
+const & let = block scoped
+var = functionally scoped
+not declaration = global scope
 
 • Explain What Is An IIFE?
 - Immediately Invoked Function Expression (invoked by adding "()")
