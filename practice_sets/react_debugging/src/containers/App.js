@@ -14,7 +14,9 @@ class App extends Component {
       showLoginForm: true,
       showCheckmark: false
     };
+    
     this.handleLogout = this.handleLogout.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
   }
 
   handleLogin() {
