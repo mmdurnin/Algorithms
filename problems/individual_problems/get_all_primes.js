@@ -6,32 +6,41 @@
 
 function getAllPrimes(number) {
   let primes = [];
-  for (let i = 2; i <= number;) {
+  for (let i = 2; i <= Math.sqrt(number); i++) {
+    
     if (number % i === 0) {
-      if (isPrime(i)) {
-        primes.push(i)
-      } else {
-        primes = primes.concat(getAllPrimes(i))
-      }
       number = number / i;
-      i = 2;
-    } else {
-      i++;
+      if (isPrime(i)) primes.push(i);
+      if (isPrime(number)) {
+        primes.push(number);
+        break;
+      };
+      i = 1;
     }
   }
   return primes;
+}
+
+function getAllPrimeFactors(number) {
+  let primes = [];
+  for (let i = 2; i <= Math.sqrt(number); i++) {
+    while (number % i === 0) {
+      primes.push(i)
+      number /= i
+    }
+  }
+  return number <= 1 ? primes : primes.concat(number)
 };
 
 function isPrime(num) {
   if (num < 2) return false;
 
-  let counter = 2;
-  while (counter < num) {
-    if (num % counter === 0) return false;
-    counter++;
+  for (let i = 2; i < num; i++) {
+    if (num % i === 0) return false;
   };
   
   return true;
 };
 
+console.log(getAllPrimeFactors(15))
 console.log(getAllPrimes(15))
