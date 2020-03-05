@@ -28,4 +28,8 @@
 
     PROMISE: has 2 properties (status and value) AND has two functions that you can call: then & catch
 
+ASYNC AWAIT
+
+
+
 */
