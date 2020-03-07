@@ -1,3 +1,4 @@
+const fetch = require('node-fetch')
 const todos = ["wash dishes", "but shampoo"]
 
 function getTodos() {
@@ -48,7 +49,7 @@ async function fetchTodos() {
   console.log(data)
 }
 
-fetchTodos();
+// fetchTodos();
 
 // using promise.all
 // const promise1 = Promise.resolve("Hello World");
@@ -60,3 +61,14 @@ fetchTodos();
 //   .then((response) => response.json()) // for fetch we need two ".then"s
 
 // Promise.all([promise1, promise2, promise3, promise4]).then((values) => console.log(values))
+
+
+const diyPromise = new Promise((resolve, reject) => {
+  setTimeout(() => resolve("hello"), 2000)
+  // resolve("hello")
+})
+const users = fetch(`https://jsonplaceholder.typicode.com/todos`).then(res => res.json())
+const todoList = fetch(`https://jsonplaceholder.typicode.com/todos`).then(res => res.json())
+
+Promise.all([diyPromise, users, todoList])
+  .then((values) => {console.log(values)})
