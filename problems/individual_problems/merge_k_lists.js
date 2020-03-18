@@ -27,23 +27,13 @@ function mergeKLists(lists) {
   });
   store.sort((a, b) => a.val - b.val)
 
-  console.log(store)
   let current = new ListNode(null);
   let head = current;
 
   for (let i = 0; i < store.length; i++) {
     let list = store[i];
-    console.log("*")
-    console.log("list")
-    console.log(list)
     current.next = list;
-    console.log("current")
-    console.log(current)
     current = current.next;
-    console.log("current = current.next")
-    console.log(current)
-    console.log("head")
-    console.log(head)
   }
 
   head = head.next;
