@@ -1,4 +1,10 @@
 function addStrings(str1, str2) {
+  if (!str1) return str2; if (!str2) return str1;
+  negResult = false;
+
+  if (str1[0] === "-" && str2[0] === "-")
+    str1 = str1.slice(1), str2 = str2.slice(1)
+
   // split up strs to handle differently
   let [whole1, dec1] = str1.split("."); if (!dec1) dec1 = "0";
   let [whole2, dec2] = str2.split("."); if (!dec2) dec2 = "0";
@@ -42,9 +48,39 @@ function add(str1, str2) {
   return result.reverse().join("");
 }
 
-console.log(addStrings("123.80008906", "1234356.234")) // 1234480.03408906
-console.log(addStrings("9.9", "9.9")) // 19.8
-console.log(addStrings("1", "2")) // 3
+function subtract(pos, neg) {
+  let result = [], i = pos.length - 1, j = neg.length - 1, carry = 0;
+
+  while (i >= 0 || j >= 0) {
+    let p = pos[i]
+    let n = (j < 0) ? 0 : neg[j]
+    let subtractor = n + carry;
+
+    if (p - subtractor < 0) {
+      p += 10;
+      carry = 1;
+    } else {
+      carry = 0;
+    }
+
+    p -= subtractor;
+    result.push(p)
+    
+    i--;
+    j--;
+  }
+
+  if (carry) result.push("-")
+  return result.reverse().join("")
+}
+
+console.log(subtract("123", "56"))
+
+// console.log(addStrings("123.80008906", "1234356.234")) // 1234480.03408906
+// console.log(addStrings("9.9", "9.9")) // 19.8
+// console.log(addStrings("1", "2")) // 3
+// console.log(addStrings("", ""))
+// console.log(addStrings("-123.123", "123.123"))
 
 // function addStrings(str1, str2) {
 //   // split up strs to handle differently
