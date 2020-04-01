@@ -1,7 +1,7 @@
 /*
 Given an array of integers and an integer k, you need to find the number of unique k-diff pairs in the array.
 Here a k-diff pair is defined as an integer pair (i, j),
-where i and j are both numbers in the array and their absolute difference is k.
+**where i and j are both numbers in the array and their absolute difference is k.**
 
 input: [3, 1, 4, 1, 5], 2
 output: 2
@@ -52,4 +52,20 @@ campingTrip.printExpenses()
                                -> Alice owes $133
                                -> John owes $33
                                -> Bob owes $133
+*/
+
+/*
+Given two integers dividend and divisor, divide two integers 
+without using multiplication, division and mod operator.
+Return the quotient after dividing dividend by divisor.
+The integer division should truncate toward zero, 
+which means losing its fractional part. 
+For example, truncate(8.345) = 8 and truncate(-2.7335) = -2.
+
+Both dividend and divisor will be 32-bit signed integers.
+The divisor will never be 0.
+Assume we are dealing with an environment which could only 
+store integers within the 32-bit signed integer range: [−231,  231 − 1]. 
+For the purpose of this problem, 
+assume that your function returns 231 − 1 when the division result overflows.
 */
