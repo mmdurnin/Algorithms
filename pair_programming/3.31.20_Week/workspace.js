@@ -37,13 +37,18 @@ Later in the trip, John went out and bought groceries for $100, which he shared 
 Now, the trip is over and everyone wants to get paid back what they are owed
 - print out the list of transactions that would settle everyone's debts.
 
-This is a flexible exercise. The solution that I came up with has the following inputs and outputs:
+This is a flexible exercise. You can decide on what inputs your program will take, so long as you get an output
+that logs how much people owe/ are owed.
+
+The solution that I came up with requires the following:
 
 let campingTrip = new ExpenseRecord();
 let [sarah, john, bob, alice] = campingTrip.addMembers("Sarah", "John", "Bob", "Alice");
 campingTrip.addExpense(sarah, [alice, john, bob], 400)
 campingTrip.addExpense(john, [alice, bob], 100)
-campingTrip.printExpenses() // -> Sarah is owed $300
+campingTrip.printExpenses() 
+
+                               -> Sarah is owed $300
                                -> Alice owes $133
                                -> John owes $33
                                -> Bob owes $133
