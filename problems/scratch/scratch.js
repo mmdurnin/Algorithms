@@ -68,7 +68,7 @@ var solveSudoku = function (board) {
 
     let squares = [q1, q2, q3, q4, q5, q6, q7, q8, q9];
 
-    console.log(replaceTile(board, squares))
+    // console.log(replaceTile(board, squares))
 
     function replaceTile(board, squares) {
         let h = 0;
@@ -280,4 +280,23 @@ function merge(left, right) {
     return arr.concat(left, right);
 }
 
-console.log(mergeSort([5, 1, 3, 10, 4, 2]))
+// console.log(mergeSort([5, 1, 3, 10, 4, 2]))
+
+function cook() {
+
+    let food = [];
+    return function(str) {
+        if (str[1] === "u") {
+            console.log(`the beast doesnt like ${str}`)
+        } else {
+            console.log(`yum Yum YUM! The beast loves ${str}`)
+            food.push(str)
+        }
+        console.log(`the beast has eaten: ${food.join(', ')}`)
+    }
+}
+
+let feedCiara = cook()
+feedCiara('strawberries')
+feedCiara('mushrooms')
+// maureen.feedTheBeast('strawberries')
