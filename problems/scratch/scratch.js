@@ -296,7 +296,16 @@ function cook() {
     }
 }
 
-let feedCiara = cook()
-feedCiara('strawberries')
-feedCiara('mushrooms')
-// maureen.feedTheBeast('strawberries')
+// let feedCiara = cook()
+// feedCiara('strawberries')
+// feedCiara('mushrooms')
+
+let dog = {
+    name: 'doggo',
+    sayName() {
+        console.log(this.name)
+    }
+}
+
+let sayName = dog.sayName.bind(dog)
+sayName()
