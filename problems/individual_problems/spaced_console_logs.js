@@ -15,4 +15,20 @@ function spaceConsoleLogs() {
   }
 }
 
-spaceConsoleLogs();
+// spaceConsoleLogs();
+
+function spaceLogs(num) {
+  for (let i = 0; i < num; i++) {
+    delay(1000, i).then(() => {console.log(i)})
+  }
+}
+
+function delay(time) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve()
+    }, time)
+  })
+}
+
+spaceLogs(5)
