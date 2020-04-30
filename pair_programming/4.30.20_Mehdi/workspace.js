@@ -1,0 +1,8 @@
+/*
+ideas:
+ALGORITHMS
+
+
+APPLIED PROBLEMS
+
+*/
